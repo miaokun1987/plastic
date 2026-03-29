@@ -1,0 +1,14 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fef2f2"/>
+  <circle cx="200" cy="150" r="80" fill="url(#grad3)" opacity="0.2"/>
+  <rect x="130" y="110" width="60" height="80" rx="3" fill="#fff" stroke="#ef4444" stroke-width="2"/>
+  <rect x="210" y="110" width="60" height="80" rx="3" fill="#fff" stroke="#ef4444" stroke-width="2"/>
+  <text x="200" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#dc2626" font-weight="bold">PHARMA</text>
+  <text x="200" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#991b1b" font-weight="bold">医药行业包装</text>
+</svg>

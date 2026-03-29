@@ -1,0 +1,60 @@
+1.重新构建 npm run build
+2.启动服务器并通过3001端口访问
+$env:PORT=3001; npm run start
+
+
+
+
+==========删除并重新构建============
+  **完整步骤
+  完整步骤（PowerShell）：
+
+  #
+  # 1. 停止服务器 (按 Ctrl+C)
+
+  # 2
+  # 2. 删除构建目录
+  Remove-
+  Remove-Item -Recurse -Force .next
+
+  # 3
+  # 3. 重新构建
+  npm run build
+
+
+  #
+  # 4. 启动生产服务器 (3001 端口)
+  $env:PORT
+  $env:PORT=3001; npm run start
+============图片信息===============
+
+● 以下是 E:\Qoder\独立站\public\images 目录下所有 SVG 文件的尺寸信息：
+
+   文件名                                                 │ 尺寸 (宽×高)
+  ────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────
+   product-placeholder.svg                                │ 800 × 800 px
+   banner-placeholder.svg                                 │ 1920 × 600 px
+   category-placeholder.svg                               │ 400 × 300 px
+   logo-placeholder.svg                                   │ 200 × 60 px
+   about-placeholder.svg                                  │ 600 × 400 px
+   product-diagram-placeholder.svg                        │ 800 × 500 px (viewBox)
+   industry-food.svg                                      │ 400 × 300 px
+   industry-beverage.svg                                  │ 400 × 300 px
+   industry-pharmaceutical.svg                            │ 400 × 300 px
+   industry-chemical.svg                                  │ 400 × 300 px
+   industry-agriculture.svg                               │ 400 × 300 px
+   industry-petfood.svg                                   │ 400 × 300 px
+   product-lay-flat-pouch.svg                             │ 800 × 800 px
+   product-stand-up-pouch.svg                             │ 800 × 800 px
+   product-zipper-pouch.svg                               │ 800 × 800 px
+   product-shrink-film.svg                                │ 800 × 800 px
+   product-vacuum-pouch.svg                               │ 800 × 800 px
+   product-spouted-pouch.svg                              │ 800 × 800 px
+   banner-main.svg                                        │ 600 × 400 px
+
+  总结：
+
+  - 产品包装袋系列 (6 个): 800 × 800 px
+  - 行业图标系列 (6 个): 400 × 300 px
+  - 占位图: 各种尺寸 (200×60 到 1920×600)
+  - 主横幅: banner-main.svg 是 600 × 400 px

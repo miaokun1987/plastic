@@ -1,0 +1,23 @@
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shrink1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shrink2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e9d5ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#d8b4fe;stop-opacity:0.4" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="#faf5ff"/>
+  <circle cx="400" cy="400" r="250" fill="#fff" opacity="0.5"/>
+  <g transform="translate(400, 400)">
+    <ellipse cx="-80" cy="0" rx="60" ry="180" fill="url(#shrink1)" opacity="0.2"/>
+    <ellipse cx="-80" cy="0" rx="50" ry="170" fill="url(#shrink2)"/>
+    <ellipse cx="80" cy="0" rx="60" ry="180" fill="url(#shrink1)" opacity="0.2"/>
+    <ellipse cx="80" cy="0" rx="50" ry="170" fill="url(#shrink2)"/>
+    <text x="0" y="-200" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#9333ea" font-weight="bold">SHRINK FILM</text>
+    <text x="0" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#6b21a8">收缩膜</text>
+  </g>
+  <text x="400" y="750" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#6b21a8" font-weight="bold">高透明热收缩膜</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#f3f4f6"/>
+  <rect x="50" y="50" width="700" height="400" rx="8" fill="#e5e7eb" stroke="#d1d5db" stroke-width="2"/>
+  <text x="400" y="220" text-anchor="middle" fill="#9ca3af" font-family="Arial, sans-serif" font-size="24">产品示意图</text>
+  <text x="400" y="260" text-anchor="middle" fill="#9ca3af" font-family="Arial, sans-serif" font-size="16">Product Diagram</text>
+  <rect x="150" y="300" width="200" height="100" rx="4" fill="#d1d5db"/>
+  <rect x="450" y="300" width="200" height="100" rx="4" fill="#d1d5db"/>
+  <line x1="250" y1="350" x2="550" y2="350" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="400" y="450" text-anchor="middle" fill="#9ca3af" font-family="Arial, sans-serif" font-size="12">请替换为实际产品示意图</text>
+</svg>

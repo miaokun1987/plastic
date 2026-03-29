@@ -1,0 +1,112 @@
+
+> plastic-packaging-website@1.0.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3001
+
+ ✓ Starting...
+ ✓ Ready in 4.5s
+ ○ Compiling / ...
+ ✓ Compiled / in 5.4s (304 modules)
+ ✓ Compiled in 480ms (304 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:308:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:782:132)
+    at Document
+ GET / 200 in 6211ms
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 1063ms (349 modules)
+ GET /admin 200 in 1639ms
+ ✓ Compiled /api/auth/verify in 290ms (141 modules)
+ GET /api/auth/verify 401 in 527ms
+ ✓ Compiled /industries in 363ms (368 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:308:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:782:132)
+    at Document
+ GET /industries 200 in 508ms
+ GET /admin 200 in 44ms
+ GET /api/auth/verify 304 in 17ms
+ GET /api/auth/verify 304 in 11ms
+ ✓ Compiled /api/content/banners in 263ms (144 modules)
+ ✓ Compiled (148 modules)
+ GET /api/products/categories 304 in 502ms
+ GET /api/content/banners 304 in 499ms
+ GET /api/products 304 in 527ms
+ GET /api/products/categories 304 in 14ms
+ GET /api/content/banners 304 in 27ms
+ GET /api/products 304 in 42ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:308:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:782:132)
+    at Document
+ GET /industries 200 in 82ms
+ ✓ Compiled /_error in 336ms (373 modules)
+ GET /images/industry-pet-food.svg 404 in 391ms
+ ✓ Compiled /api/industries in 91ms (151 modules)
+ GET /api/industries 304 in 150ms
+ GET /api/industries 304 in 27ms
+ GET /images/industry-pet-food.svg 404 in 20ms
+ GET /images/industry-pet-food.svg 404 in 15ms
+ ✓ Compiled /api/upload in 105ms (155 modules)
+ POST /api/upload 200 in 301ms
+ ✓ Compiled /api/uploads/[filename] in 93ms (157 modules)
+ GET /api/uploads/1774798402173-791939457.png 200 in 277ms
+ ✓ Compiled /api/industries/[slug] in 89ms (159 modules)
+ PUT /api/industries/pet-food 200 in 137ms
+ GET /api/industries 200 in 33ms
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:308:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:782:132)
+    at Document
+ GET /industries 200 in 56ms
+ ✓ Compiled /about in 455ms (387 modules)
+ GET /_next/data/development/about.json 200 in 46ms
+ GET /api/products 304 in 14ms
+ GET /api/products/categories 304 in 34ms
+ GET /api/content/banners 304 in 49ms
+ GET /api/products 304 in 13ms
+ GET /api/products/categories 304 in 28ms
+ GET /api/content/banners 304 in 46ms
+ ✓ Compiled /api/content in 107ms (160 modules)
+ GET /api/content?page=home 304 in 158ms
+ GET /api/content?page=home 304 in 24ms
+ ✓ Compiled /contact in 396ms (388 modules)
+ GET /_next/data/development/contact.json 200 in 26ms
+ GET /_next/data/development/about.json 200 in 13ms
+ GET /api/products 304 in 17ms
+ GET /api/products/categories 304 in 35ms
+ GET /api/content/banners 304 in 54ms
+ GET /api/products 304 in 22ms
+ GET /api/products/categories 304 in 40ms
+ GET /api/content/banners 304 in 65ms
+ GET /api/products 304 in 6ms
+ GET /api/products/categories 304 in 28ms
+ GET /api/products 304 in 24ms
+ GET /api/products/categories 304 in 35ms
+ GET /api/uploads/1774794744488-923585769.svg 304 in 39ms
+ GET /api/uploads/1774794821182-368301978.svg 304 in 39ms
+ GET /api/content/banners 304 in 5ms
+ GET /api/content/banners 304 in 15ms
+ GET /api/content?page=home 304 in 7ms
+ GET /api/content?page=home 304 in 21ms
+ ✓ Compiled / in 209ms (388 modules)
+ GET /_next/data/development/index.json 200 in 63ms
+ GET /api/uploads/1774794582727-555765423.png 304 in 93ms
+ GET /api/uploads/1774794628491-947738264.png 304 in 537ms
+ GET /api/uploads/1774794651976-325758837.png 304 in 537ms
+ GET /api/uploads/1774794692223-283803929.png 304 in 535ms
