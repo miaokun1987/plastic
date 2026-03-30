@@ -4,14 +4,27 @@ import { GetStaticProps } from 'next';
 
 interface Props {
   content: { [key: string]: string };
+  aboutData: {
+    title: string;
+    description1: string;
+    description2: string;
+    description3: string;
+    image: string;
+    whyChooseUsTitle: string;
+    whyChooseUsSubtitle: string;
+    certificationsTitle: string;
+    certificationsSubtitle: string;
+    ctaTitle: string;
+    ctaDescription: string;
+  };
 }
 
-export default function AboutPage({ content }: Props) {
+export default function AboutPage({ content, aboutData }: Props) {
   return (
     <>
       <Head>
-        <title>关于我们 - {content['header_logo'] || '塑袋包装'}</title>
-        <meta name="description" content="了解塑袋包装科技有限公司，20年行业经验的塑料包装解决方案提供商" />
+        <title>{aboutData.title || '关于我们'} - {content['header_logo'] || '塑袋包装'}</title>
+        <meta name="description" content={aboutData.description1 || '了解塑袋包装科技有限公司，20 年行业经验的塑料包装解决方案提供商'} />
       </Head>
 
       {/* Header */}
@@ -20,7 +33,7 @@ export default function AboutPage({ content }: Props) {
       {/* Page Header */}
       <section className="bg-primary-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">关于我们</h1>
+          <h1 className="text-4xl font-bold mb-4">{aboutData.title || '关于我们'}</h1>
           <p className="text-xl opacity-90">专业塑料包装解决方案提供商</p>
         </div>
       </section>
@@ -32,18 +45,18 @@ export default function AboutPage({ content }: Props) {
             <div>
               <h2 className="text-3xl font-bold mb-6">公司简介</h2>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                塑袋包装科技有限公司是一家专业的塑料包装解决方案提供商，拥有超过20年的行业经验。我们专注于为食品、饮料、日用品、医药等行业提供高品质的包装产品。
+                {aboutData.description1 || ''}
               </p>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                公司拥有先进的生产设备和检测仪器，通过了ISO9001质量管理体系认证、ISO14001环境管理体系认证等多项国际认证。我们的产品符合FDA、QS等食品安全标准。
+                {aboutData.description2 || ''}
               </p>
               <p className="text-gray-600 leading-relaxed">
-                我们始终坚持"品质第一、客户至上"的经营理念，致力于为客户提供最优质的包装产品和最满意的服务。无论是标准产品还是定制解决方案，我们都能满足您的需求。
+                {aboutData.description3 || ''}
               </p>
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
               <img
-                src="/images/about-placeholder.svg"
+                src={aboutData.image || '/images/about-placeholder.svg'}
                 alt="工厂介绍"
                 className="w-full h-96 object-cover"
               />
@@ -56,8 +69,8 @@ export default function AboutPage({ content }: Props) {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">为什么选择我们</h2>
-            <p className="text-lg text-gray-600">我们的优势，是您的保障</p>
+            <h2 className="text-3xl font-bold mb-4">{aboutData.whyChooseUsTitle || '为什么选择我们'}</h2>
+            <p className="text-lg text-gray-600">{aboutData.whyChooseUsSubtitle || '我们的优势，是您的保障'}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -69,7 +82,7 @@ export default function AboutPage({ content }: Props) {
               {
                 icon: '✅',
                 title: '品质认证',
-                desc: '通过ISO9001、ISO14001等多项国际认证'
+                desc: '通过 ISO9001、ISO14001 等多项国际认证'
               },
               {
                 icon: '💡',
@@ -116,8 +129,8 @@ export default function AboutPage({ content }: Props) {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">资质认证</h2>
-            <p className="text-lg text-gray-600">专业资质，品质保障</p>
+            <h2 className="text-3xl font-bold mb-4">{aboutData.certificationsTitle || '资质认证'}</h2>
+            <p className="text-lg text-gray-600">{aboutData.certificationsSubtitle || '专业资质，品质保障'}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {['ISO9001', 'ISO14001', 'FDA', 'QS', 'SGS', 'BRC'].map((cert, index) => (
@@ -133,8 +146,8 @@ export default function AboutPage({ content }: Props) {
       {/* CTA */}
       <section className="py-16 bg-primary-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">准备开始合作?</h2>
-          <p className="text-xl mb-8 opacity-90">联系我们获取免费样品和专业建议</p>
+          <h2 className="text-3xl font-bold mb-4">{aboutData.ctaTitle || '准备开始合作？'}</h2>
+          <p className="text-xl mb-8 opacity-90">{aboutData.ctaDescription || '联系我们获取免费样品和专业建议'}</p>
           <Link href="/contact" className="btn-secondary">
             联系我们
           </Link>
@@ -178,8 +191,8 @@ function Footer({ content }: { content: { [key: string]: string } }) {
             <h3 className="text-xl font-bold mb-4">{content['company_name'] || '塑袋包装科技有限公司'}</h3>
             <div className="space-y-2 text-gray-400">
               <p>{content['company_address']}</p>
-              <p>电话: {content['company_phone']}</p>
-              <p>邮箱: {content['company_email']}</p>
+              <p>电话：{content['company_phone']}</p>
+              <p>邮箱：{content['company_email']}</p>
               {content['social_linkedin'] && <p>LinkedIn: {content['social_linkedin']}</p>}
               {content['social_facebook'] && <p>Facebook: {content['social_facebook']}</p>}
               {content['social_instagram'] && <p>Instagram: {content['social_instagram']}</p>}
@@ -221,7 +234,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const contentRows = dbHelpers.getAllContent();
   const content: { [key: string]: string } = {};
   contentRows.forEach((row) => {
-    // 对于 key 为 "image" 的记录，优先使用 image 字段的值
     if (row.key === 'image') {
       const imageUrl = row.image || row.value;
       if (imageUrl) {
@@ -232,11 +244,22 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   });
 
+  // 获取 about 页面数据
+  const aboutRows = contentRows.filter(row => row.page === 'about');
+  const aboutData: any = {};
+  aboutRows.forEach((row) => {
+    if (row.key === 'image') {
+      aboutData[row.key] = row.image || row.value;
+    } else {
+      aboutData[row.key] = row.value || '';
+    }
+  });
+
   return {
     props: {
       content,
+      aboutData,
     },
-    // ISR: 每 60 秒重新验证
     revalidate: 60,
   };
 };

@@ -227,18 +227,6 @@ export default function ContactPage({ content }: Props) {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold">公司位置</h2>
-          </div>
-          <div className="bg-gray-200 rounded-xl h-96 flex items-center justify-center">
-            <p className="text-gray-500">地图区域 (可嵌入百度/高德地图)</p>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <Footer content={content} />
     </>
