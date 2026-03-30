@@ -1,0 +1,23 @@
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="standup1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="standup2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#bfdbfe;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#93c5fd;stop-opacity:0.5" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="#eff6ff"/>
+  <circle cx="400" cy="400" r="250" fill="#fff" opacity="0.5"/>
+  <g transform="translate(400, 400)">
+    <path d="M-120,-160 L120,-160 L140,180 L-140,180 Z" fill="url(#standup1)" opacity="0.15"/>
+    <path d="M-110,-150 L110,-150 L125,170 L-125,170 Z" fill="url(#standup2)"/>
+    <rect x="-110" y="-150" width="220" height="50" rx="8" fill="#fff" opacity="0.4"/>
+    <text x="0" y="-120" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#2563eb" font-weight="bold">STAND UP POUCH</text>
+    <text x="0" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#1e40af">站立袋</text>
+    <ellipse cx="0" cy="180" rx="130" ry="15" fill="#2563eb" opacity="0.2"/>
+  </g>
+  <text x="400" y="750" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#1e40af" font-weight="bold">自站立袋包装</text>
+</svg>

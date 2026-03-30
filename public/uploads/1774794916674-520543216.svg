@@ -1,0 +1,25 @@
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="spout1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#db2777;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="spout2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbcfe8;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#f9a8d4;stop-opacity:0.5" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="#fdf2f8"/>
+  <circle cx="400" cy="400" r="250" fill="#fff" opacity="0.5"/>
+  <g transform="translate(400, 400)">
+    <path d="M-100,-150 L100,-150 L120,160 L-120,160 Z" fill="url(#spout1)" opacity="0.15"/>
+    <path d="M-90,-140 L90,-140 L105,150 L-105,150 Z" fill="url(#spout2)"/>
+    <circle cx="0" cy="-160" r="25" fill="#fff" stroke="#db2777" stroke-width="3"/>
+    <circle cx="0" cy="-160" r="15" fill="#db2777" opacity="0.5"/>
+    <rect x="-90" y="-140" width="180" height="40" rx="6" fill="#fff" opacity="0.4"/>
+    <text x="0" y="-10" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#db2777" font-weight="bold">SPOUTED POUCH</text>
+    <text x="0" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#831843">自立袋/带嘴袋</text>
+    <ellipse cx="0" cy="160" rx="115" ry="12" fill="#db2777" opacity="0.2"/>
+  </g>
+  <text x="400" y="750" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#831843" font-weight="bold">液体自立袋包装</text>
+</svg>
