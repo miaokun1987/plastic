@@ -1787,12 +1787,24 @@ function ContentManager() {
     <div>
       <h2 className="text-2xl font-bold mb-6">网站内容管理</h2>
 
-      <div className="flex gap-4 mb-6">
+      <div className="flex gap-4 mb-6 flex-wrap">
         <button
           onClick={() => setActivePage('home')}
           className={`px-4 py-2 rounded-lg ${activePage === 'home' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
           首页
+        </button>
+        <button
+          onClick={() => setActivePage('about')}
+          className={`px-4 py-2 rounded-lg ${activePage === 'about' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
+        >
+          关于我们
+        </button>
+        <button
+          onClick={() => setActivePage('contact')}
+          className={`px-4 py-2 rounded-lg ${activePage === 'contact' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
+        >
+          联系我们
         </button>
         <button
           onClick={() => setActivePage('industries')}
