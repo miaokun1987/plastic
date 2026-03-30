@@ -33,3 +33,4 @@ Warning: A title element received an array with more than 1 element as children.
  GET /admin 200 in 1939ms
  GET /admin 200 in 69ms
  GET /admin 200 in 15ms
+^C
