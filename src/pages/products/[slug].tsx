@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useState } from 'react';
+import path from 'path';
+import fs from 'fs';
 
 interface Category {
   id: number;
@@ -276,9 +278,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 // 生成静态路径
-export const getStaticPaths: GetStaticPaths = () => {
-  const { dbHelpers } = require('@/lib/db');
-  const categories = dbHelpers.getAllCategories();
+export const getStaticPaths: GetStaticPaths = async () => {
+  // 直接读取数据库文件
+  const dbPath = path.join(process.cwd(), 'data', 'database.json');
+  const db = JSON.parse(fs.readFileSync(dbPath, 'utf-8'));
+  const categories = db.categories || [];
   
   const paths = categories.map((category: { slug: string }) => ({
     params: { slug: category.slug }

@@ -1,7 +1,26 @@
 import path from 'path';
 import fs from 'fs';
 
-const dbPath = path.join(process.cwd(), 'data', 'database.json');
+// 使用绝对路径确保在各种环境下都能正确读取
+const getDbPath = () => {
+  // 尝试多个可能的路径
+  const possiblePaths = [
+    path.join(process.cwd(), 'data', 'database.json'),
+    path.join(__dirname, '../../data/database.json'),
+    '/opt/build/repo/data/database.json', // Netlify 环境
+  ];
+  
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      return p;
+    }
+  }
+  
+  // 默认返回第一个路径
+  return path.join(process.cwd(), 'data', 'database.json');
+};
+
+const dbPath = getDbPath();
 
 interface Database {
   users: User[];
