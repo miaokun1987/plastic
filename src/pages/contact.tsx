@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 
 interface Props {
   content: { [key: string]: string };
@@ -312,7 +312,7 @@ function Footer({ content }: { content: { [key: string]: string } }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { dbHelpers } = await import('@/lib/db');
 
   // 获取网站内容
@@ -334,5 +334,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       content,
     },
+    // ISR: 每 60 秒重新验证
+    revalidate: 60,
   };
 };

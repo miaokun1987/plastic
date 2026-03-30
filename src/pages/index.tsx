@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
+import { useState } from 'react';
 
 interface Banner {
   id: number;
@@ -336,9 +337,8 @@ function Footer({ content }: { content: Content }) {
   );
 }
 
-import { useState } from 'react';
-
-export const getServerSideProps: GetServerSideProps = async () => {
+// ISR: 每 60 秒重新生成页面
+export const getStaticProps: GetStaticProps = async () => {
   const { dbHelpers } = await import('@/lib/db');
 
   // 获取轮播图
@@ -389,5 +389,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       featuredProducts,
       content,
     },
+    // ISR: 每 60 秒重新验证并重新生成页面
+    revalidate: 60,
   };
 };

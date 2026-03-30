@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 interface Product {
   id: number;
@@ -364,7 +364,7 @@ function Footer({ content }: { content: { [key: string]: string } }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as { slug: string };
   const { dbHelpers } = await import('@/lib/db');
 
@@ -409,5 +409,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       relatedProducts,
       content,
     },
+    // ISR: 每 60 秒重新验证
+    revalidate: 60,
+  };
+};
+
+// 生成静态路径
+export const getStaticPaths: GetStaticPaths = () => {
+  const { dbHelpers } = require('@/lib/db');
+  const products = dbHelpers.getAllProducts();
+  
+  const paths = products.map((product: { slug: string }) => ({
+    params: { slug: product.slug }
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking' // 允许动态生成缺失的页面
   };
 };

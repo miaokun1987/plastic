@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { dbHelpers } from '@/lib/db';
 
 interface Content {
@@ -449,7 +449,7 @@ function Footer({ content }: { content: Content }) {
 
 import { useState } from 'react';
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const contentRows = dbHelpers.getAllContent();
   const content: Content = {};
   contentRows.forEach((row) => {
@@ -479,5 +479,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       content,
     },
+    // ISR: 每 60 秒重新验证
+    revalidate: 60,
   };
 };

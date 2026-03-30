@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { dbHelpers } from '@/lib/db';
 import { useState } from 'react';
 
@@ -283,7 +283,7 @@ function Footer({ content }: { content: Content }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   // 获取行业数据
   const industries = dbHelpers.getAllIndustries();
   
@@ -317,5 +317,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       content,
       industries,
     },
+    // ISR: 每 60 秒重新验证
+    revalidate: 60,
   };
 };

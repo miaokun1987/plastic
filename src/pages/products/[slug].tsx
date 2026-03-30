@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import { useState } from 'react';
 
 interface Category {
@@ -232,7 +232,7 @@ function Footer({ content }: { content: { [key: string]: string } }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as { slug?: string };
   const { dbHelpers } = await import('@/lib/db');
 
@@ -270,5 +270,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       currentCategory: slug || null,
       content,
     },
+    // ISR: 每 60 秒重新验证
+    revalidate: 60,
+  };
+};
+
+// 生成静态路径
+export const getStaticPaths: GetStaticPaths = () => {
+  const { dbHelpers } = require('@/lib/db');
+  const categories = dbHelpers.getAllCategories();
+  
+  const paths = categories.map((category: { slug: string }) => ({
+    params: { slug: category.slug }
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking' // 允许动态生成缺失的页面
   };
 };
