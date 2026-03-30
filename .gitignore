@@ -36,6 +36,6 @@ next-env.d.ts
 *.db
 *.sqlite
 
-# Uploads
-public/uploads/*
-!public/uploads/.gitkeep
+# Uploads - 允许上传的文件用于静态部署
+# public/uploads/*
+# !public/uploads/.gitkeep

@@ -1,26 +1,43 @@
 import path from 'path';
 import fs from 'fs';
 
-// 使用绝对路径确保在各种环境下都能正确读取
-const getDbPath = () => {
+// 延迟确定数据库路径，在函数调用时才解析
+const getDbPath = (): string => {
   // 尝试多个可能的路径
   const possiblePaths = [
     path.join(process.cwd(), 'data', 'database.json'),
-    path.join(__dirname, '../../data/database.json'),
+    path.resolve(__dirname, '../../../data/database.json'),
     '/opt/build/repo/data/database.json', // Netlify 环境
   ];
   
   for (const p of possiblePaths) {
-    if (fs.existsSync(p)) {
+    if (p && fs.existsSync(p)) {
       return p;
     }
   }
   
-  // 默认返回第一个路径
+  // 如果都找不到，返回默认路径（会抛出错误）
   return path.join(process.cwd(), 'data', 'database.json');
 };
 
-const dbPath = getDbPath();
+// 获取数据库内容，带错误处理
+const getDatabaseContent = (): Database => {
+  const dbPath = getDbPath();
+  if (!fs.existsSync(dbPath)) {
+    console.error('Database file not found at:', dbPath);
+    console.error('Current working directory:', process.cwd());
+    console.error('__dirname:', __dirname);
+    throw new Error(`Database file not found: ${dbPath}`);
+  }
+  
+  try {
+    const data = fs.readFileSync(dbPath, 'utf-8');
+    return JSON.parse(data);
+  } catch (error) {
+    console.error('Error reading database file:', dbPath, error);
+    throw error;
+  }
+};
 
 interface Database {
   users: User[];
@@ -115,16 +132,17 @@ interface Menu {
 let db: Database | null = null;
 
 export function getDatabase(): Database {
+  const dbPath = getDbPath();
   const dir = path.dirname(dbPath);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
-  db = loadDatabase();
+  db = loadDatabase(dbPath);
   initializeDatabase();
   return db;
 }
 
-function loadDatabase(): Database {
+function loadDatabase(dbPath: string): Database {
   if (fs.existsSync(dbPath)) {
     const data = fs.readFileSync(dbPath, 'utf-8');
     return JSON.parse(data);
@@ -142,6 +160,7 @@ function loadDatabase(): Database {
 
 export function saveDatabase(): void {
   if (db) {
+    const dbPath = getDbPath();
     fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf-8');
   }
 }
@@ -460,11 +479,11 @@ function ensureContentExists(): void {
   });
 }
 
-// Helper functions for common operations
+// Helper functions for common operations (只读，用于 SSG)
 export const dbHelpers = {
   // Products
   getAllProducts: () => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     return db.products.map((p) => ({
       id: p.id,
       name: p.name,
@@ -489,7 +508,7 @@ export const dbHelpers = {
   },
 
   getProductBySlug: (slug: string) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const p = db.products.find((p) => p.slug === slug);
     if (!p) return null;
     return {
@@ -516,7 +535,7 @@ export const dbHelpers = {
   },
 
   createProduct: (data: any) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const newId = Math.max(...db.products.map((p) => p.id), 0) + 1;
     const newProduct: Product = {
       id: newId,
@@ -543,7 +562,7 @@ export const dbHelpers = {
   },
 
   updateProduct: (slug: string, data: any) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const index = db.products.findIndex((p) => p.slug === slug);
     if (index === -1) return false;
     db.products[index] = {
@@ -568,7 +587,7 @@ export const dbHelpers = {
   },
 
   deleteProduct: (slug: string) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const index = db.products.findIndex((p) => p.slug === slug);
     if (index === -1) return false;
     db.products.splice(index, 1);
@@ -578,7 +597,7 @@ export const dbHelpers = {
 
   // Categories
   getAllCategories: () => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     return db.categories.map((c) => ({
       id: c.id,
       name: c.name,
@@ -591,7 +610,7 @@ export const dbHelpers = {
   },
 
   createCategory: (data: any) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const newId = Math.max(...db.categories.map((c) => c.id), 0) + 1;
     const newCategory: Category = {
       id: newId,
@@ -608,7 +627,7 @@ export const dbHelpers = {
   },
 
   updateCategory: (id: number, data: any) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const index = db.categories.findIndex((c) => c.id === id);
     if (index === -1) return false;
     db.categories[index] = {
@@ -624,7 +643,7 @@ export const dbHelpers = {
   },
 
   deleteCategory: (id: number) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const index = db.categories.findIndex((c) => c.id === id);
     if (index === -1) return false;
     db.categories.splice(index, 1);
@@ -634,7 +653,7 @@ export const dbHelpers = {
 
   // Industries
   getAllIndustries: () => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     return db.industries.map((i) => ({
       id: i.id,
       name: i.name,
@@ -647,7 +666,7 @@ export const dbHelpers = {
   },
 
   createIndustry: (data: any) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const newId = Math.max(...db.industries.map((i) => i.id), 0) + 1;
     const newIndustry: Industry = {
       id: newId,
@@ -664,7 +683,7 @@ export const dbHelpers = {
   },
 
   updateIndustry: (id: number, data: any) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const index = db.industries.findIndex((i) => i.id === id);
     if (index === -1) return false;
     db.industries[index] = {
@@ -680,7 +699,7 @@ export const dbHelpers = {
   },
 
   deleteIndustry: (id: number) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const index = db.industries.findIndex((i) => i.id === id);
     if (index === -1) return false;
     db.industries.splice(index, 1);
@@ -690,7 +709,7 @@ export const dbHelpers = {
 
   // Banners
   getAllBanners: () => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     return db.banners.map((b) => ({
       id: b.id,
       title: b.title,
@@ -706,7 +725,7 @@ export const dbHelpers = {
   },
 
   createBanner: (data: any) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const newId = Math.max(...db.banners.map((b) => b.id), 0) + 1;
     const newBanner: Banner = {
       id: newId,
@@ -726,7 +745,7 @@ export const dbHelpers = {
   },
 
   updateBanner: (id: number, data: any) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const index = db.banners.findIndex((b) => b.id === id);
     if (index === -1) return false;
     db.banners[index] = {
@@ -745,7 +764,7 @@ export const dbHelpers = {
   },
 
   deleteBanner: (id: number) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const index = db.banners.findIndex((b) => b.id === id);
     if (index === -1) return false;
     db.banners.splice(index, 1);
@@ -755,12 +774,12 @@ export const dbHelpers = {
 
   // Site Content
   getAllContent: () => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     return db.siteContent;
   },
 
   getContent: (page?: string, section?: string, key?: string) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     let results = db.siteContent;
     if (page) results = results.filter((c) => c.page === page);
     if (section) results = results.filter((c) => c.section === section);
@@ -769,7 +788,7 @@ export const dbHelpers = {
   },
 
   saveContent: (page: string, section: string, key: string, value: string, image?: string) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     const existingIndex = db.siteContent.findIndex((c) => c.page === page && c.section === section && c.key === key);
     if (existingIndex !== -1) {
       db.siteContent[existingIndex] = {
@@ -796,7 +815,7 @@ export const dbHelpers = {
 
   // Users
   getUserByUsername: (username: string) => {
-    const db = getDatabase();
+    const db = getDatabaseContent();
     return db.users.find((u) => u.username === username) || null;
   },
 };
