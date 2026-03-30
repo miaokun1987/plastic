@@ -1593,7 +1593,6 @@ function BannersManager() {
 function ContentManager() {
   const [content, setContent] = useState<any[]>([]);
   const [activePage, setActivePage] = useState('home');
-  const updateTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // 字段标签映射
   const fieldLabels: { [key: string]: { [key: string]: string } } = {
@@ -1710,53 +1709,34 @@ function ContentManager() {
     }
   };
 
-  // 防抖更新函数
-  const debouncedUpdate = useCallback((item: any, newValue: string, newImage?: string) => {
-    const key = `${item.page}-${item.section}-${item.key}`;
-
-    // 先更新本地状态，避免闪烁
-    setContent(prevContent => {
-      return prevContent.map(c => {
-        if (c.page === item.page && c.section === item.section && c.key === item.key) {
-          return { ...c, value: newValue, image: newImage || c.image };
-        }
-        return c;
+  // 更新函数 - 直接保存，不使用防抖
+  const updateContent = useCallback(async (item: any, newValue: string, newImage?: string) => {
+    const token = localStorage.getItem('token');
+    try {
+      await fetch('/api/content', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          page: item.page,
+          section: item.section,
+          key: item.key,
+          value: newValue,
+          image: newImage || item.image,
+        }),
       });
-    });
-
-    // 清除之前的定时器
-    if (updateTimeoutRef.current) {
-      clearTimeout(updateTimeoutRef.current);
+      // 更新成功后重新获取内容
+      fetchContent();
+    } catch (error) {
+      console.error('Failed to update content:', error);
     }
-
-    // 设置新的定时器
-    updateTimeoutRef.current = setTimeout(async () => {
-      const token = localStorage.getItem('token');
-      try {
-        await fetch('/api/content', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            page: item.page,
-            section: item.section,
-            key: item.key,
-            value: newValue,
-            image: newImage || item.image,
-          }),
-        });
-        // 不需要再调用 fetchContent()，因为本地状态已经更新
-      } catch (error) {
-        console.error('Failed to update content:', error);
-      }
-    }, 500); // 500ms 防抖延迟
   }, []);
 
   const handleUpdate = useCallback((item: any, newValue: string, newImage?: string) => {
-    debouncedUpdate(item, newValue, newImage);
-  }, [debouncedUpdate]);
+    updateContent(item, newValue, newImage);
+  }, [updateContent]);
 
   const handleImageUpload = async (item: any, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
