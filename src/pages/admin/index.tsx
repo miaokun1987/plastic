@@ -264,6 +264,7 @@ function ProductsManager() {
     is_featured: false,
     sort_order: 0,
   });
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetchProducts();
@@ -295,31 +296,40 @@ function ProductsManager() {
     const token = localStorage.getItem('token');
 
     try {
-      if (editingProduct) {
-        await fetch(`/api/products/${editingProduct.slug}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        });
+      const res = editingProduct
+        ? await fetch(`/api/products/${editingProduct.slug}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(formData),
+          })
+        : await fetch('/api/products', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(formData),
+          });
+
+      if (res.ok) {
+        setSaveMessage(editingProduct ? '产品更新成功！' : '产品创建成功！');
+        setTimeout(() => setSaveMessage(null), 3000);
+        setShowForm(false);
+        setEditingProduct(null);
+        resetForm();
+        fetchProducts();
       } else {
-        await fetch('/api/products', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        });
+        const errorData = await res.json();
+        setSaveMessage(`保存失败: ${errorData.error || '未知错误'}`);
+        setTimeout(() => setSaveMessage(null), 3000);
       }
-      setShowForm(false);
-      setEditingProduct(null);
-      resetForm();
-      fetchProducts();
     } catch (error) {
       console.error('Failed to save product:', error);
+      setSaveMessage('保存失败，请检查网络连接');
+      setTimeout(() => setSaveMessage(null), 3000);
     }
   };
 
@@ -668,6 +678,11 @@ function ProductsManager() {
                 取消
               </button>
             </div>
+            {saveMessage && (
+              <div className={`mt-4 p-3 rounded ${saveMessage.includes('成功') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                {saveMessage}
+              </div>
+            )}
           </form>
         </div>
       )}
@@ -741,6 +756,7 @@ function CategoriesManager() {
     image: '',
     sort_order: 0,
   });
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetchCategories();
@@ -761,31 +777,40 @@ function CategoriesManager() {
     const token = localStorage.getItem('token');
 
     try {
-      if (editingCategory) {
-        await fetch(`/api/products/categories/${editingCategory.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        });
+      const res = editingCategory
+        ? await fetch(`/api/products/categories/${editingCategory.id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(formData),
+          })
+        : await fetch('/api/products/categories', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(formData),
+          });
+
+      if (res.ok) {
+        setSaveMessage(editingCategory ? '分类更新成功！' : '分类创建成功！');
+        setTimeout(() => setSaveMessage(null), 3000);
+        setShowForm(false);
+        setEditingCategory(null);
+        resetForm();
+        fetchCategories();
       } else {
-        await fetch('/api/products/categories', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        });
+        const errorData = await res.json();
+        setSaveMessage(`保存失败: ${errorData.error || '未知错误'}`);
+        setTimeout(() => setSaveMessage(null), 3000);
       }
-      setShowForm(false);
-      setEditingCategory(null);
-      resetForm();
-      fetchCategories();
     } catch (error) {
       console.error('Failed to save category:', error);
+      setSaveMessage('保存失败，请检查网络连接');
+      setTimeout(() => setSaveMessage(null), 3000);
     }
   };
 
@@ -960,6 +985,11 @@ function CategoriesManager() {
                 取消
               </button>
             </div>
+            {saveMessage && (
+              <div className={`mt-4 p-3 rounded ${saveMessage.includes('成功') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                {saveMessage}
+              </div>
+            )}
           </form>
         </div>
       )}
@@ -1026,6 +1056,7 @@ function IndustriesManager() {
     image: '',
     sort_order: 0,
   });
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetchIndustries();
@@ -1046,31 +1077,40 @@ function IndustriesManager() {
     const token = localStorage.getItem('token');
 
     try {
-      if (editingIndustry) {
-        await fetch(`/api/industries/${editingIndustry.slug}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ ...formData, id: editingIndustry.id }),
-        });
+      const res = editingIndustry
+        ? await fetch(`/api/industries/${editingIndustry.slug}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ ...formData, id: editingIndustry.id }),
+          })
+        : await fetch('/api/industries', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(formData),
+          });
+
+      if (res.ok) {
+        setSaveMessage(editingIndustry ? '行业更新成功！' : '行业创建成功！');
+        setTimeout(() => setSaveMessage(null), 3000);
+        setShowForm(false);
+        setEditingIndustry(null);
+        resetForm();
+        fetchIndustries();
       } else {
-        await fetch('/api/industries', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        });
+        const errorData = await res.json();
+        setSaveMessage(`保存失败: ${errorData.error || '未知错误'}`);
+        setTimeout(() => setSaveMessage(null), 3000);
       }
-      setShowForm(false);
-      setEditingIndustry(null);
-      resetForm();
-      fetchIndustries();
     } catch (error) {
       console.error('Failed to save industry:', error);
+      setSaveMessage('保存失败，请检查网络连接');
+      setTimeout(() => setSaveMessage(null), 3000);
     }
   };
 
@@ -1245,6 +1285,11 @@ function IndustriesManager() {
                 取消
               </button>
             </div>
+            {saveMessage && (
+              <div className={`mt-4 p-3 rounded ${saveMessage.includes('成功') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                {saveMessage}
+              </div>
+            )}
           </form>
         </div>
       )}
@@ -1314,6 +1359,7 @@ function BannersManager() {
     sort_order: 0,
     is_active: true,
   });
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetchBanners();
@@ -1334,31 +1380,40 @@ function BannersManager() {
     const token = localStorage.getItem('token');
 
     try {
-      if (editingBanner) {
-        await fetch(`/api/content/banners/${editingBanner.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        });
+      const res = editingBanner
+        ? await fetch(`/api/content/banners/${editingBanner.id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(formData),
+          })
+        : await fetch('/api/content/banners', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(formData),
+          });
+
+      if (res.ok) {
+        setSaveMessage(editingBanner ? '轮播图更新成功！' : '轮播图创建成功！');
+        setTimeout(() => setSaveMessage(null), 3000);
+        setShowForm(false);
+        setEditingBanner(null);
+        resetForm();
+        fetchBanners();
       } else {
-        await fetch('/api/content/banners', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        });
+        const errorData = await res.json();
+        setSaveMessage(`保存失败: ${errorData.error || '未知错误'}`);
+        setTimeout(() => setSaveMessage(null), 3000);
       }
-      setShowForm(false);
-      setEditingBanner(null);
-      resetForm();
-      fetchBanners();
     } catch (error) {
       console.error('Failed to save banner:', error);
+      setSaveMessage('保存失败，请检查网络连接');
+      setTimeout(() => setSaveMessage(null), 3000);
     }
   };
 
@@ -1554,6 +1609,11 @@ function BannersManager() {
                 取消
               </button>
             </div>
+            {saveMessage && (
+              <div className={`mt-4 p-3 rounded ${saveMessage.includes('成功') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                {saveMessage}
+              </div>
+            )}
           </form>
         </div>
       )}
@@ -1593,6 +1653,10 @@ function BannersManager() {
 function ContentManager() {
   const [content, setContent] = useState<any[]>([]);
   const [activePage, setActivePage] = useState('home');
+  const [editingValues, setEditingValues] = useState<{ [key: number]: string }>({});
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [hasChanges, setHasChanges] = useState(false);
 
   // 字段标签映射
   const fieldLabels: { [key: string]: { [key: string]: string } } = {
@@ -1704,40 +1768,83 @@ function ContentManager() {
       const res = await fetch(`/api/content?page=${activePage}`);
       const data = await res.json();
       setContent(data);
+      // 重置编辑值为原始值
+      const initialValues: { [key: number]: string } = {};
+      data.forEach((item: any) => {
+        initialValues[item.id] = item.value || '';
+      });
+      setEditingValues(initialValues);
+      setHasChanges(false);
     } catch (error) {
       console.error('Failed to fetch content:', error);
     }
   };
 
-  // 更新函数 - 直接保存，不使用防抖
-  const updateContent = useCallback(async (item: any, newValue: string, newImage?: string) => {
-    const token = localStorage.getItem('token');
-    try {
-      await fetch('/api/content', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          page: item.page,
-          section: item.section,
-          key: item.key,
-          value: newValue,
-          image: newImage || item.image,
-        }),
-      });
-      // 更新成功后重新获取内容
-      fetchContent();
-    } catch (error) {
-      console.error('Failed to update content:', error);
-    }
+  // 处理输入变化 - 只更新本地状态
+  const handleInputChange = useCallback((itemId: number, newValue: string) => {
+    setEditingValues(prev => ({ ...prev, [itemId]: newValue }));
+    setHasChanges(true);
   }, []);
 
-  const handleUpdate = useCallback((item: any, newValue: string, newImage?: string) => {
-    updateContent(item, newValue, newImage);
-  }, [updateContent]);
+  // 手动保存所有修改
+  const handleSaveAll = useCallback(async () => {
+    const token = localStorage.getItem('token');
+    setIsSaving(true);
 
+    try {
+      // 只保存有变化的内容
+      const savePromises = content.map(async (item) => {
+        const newValue = editingValues[item.id];
+        const hasValueChanged = newValue !== (item.value || '');
+        const hasImageChanged = item.newImage !== item.image;
+
+        if (hasValueChanged || hasImageChanged) {
+          const res = await fetch('/api/content', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              page: item.page,
+              section: item.section,
+              key: item.key,
+              value: newValue,
+              image: item.newImage || item.image,
+            }),
+          });
+          return res;
+        }
+        return null;
+      });
+
+      const results = await Promise.all(savePromises);
+
+      // 检查是否有保存失败的情况
+      const hasFailures = results.some(res => res && !res.ok);
+
+      if (hasFailures) {
+        setSaveMessage('部分内容保存失败，请重试');
+        setTimeout(() => setSaveMessage(null), 3000);
+      } else {
+        setSaveMessage('所有内容保存成功！');
+        setTimeout(() => setSaveMessage(null), 3000);
+        setHasChanges(false);
+        // 清除 newImage 标记
+        setContent(prev => prev.map(item => ({ ...item, newImage: undefined })));
+        // 重新获取内容以显示最新值
+        fetchContent();
+      }
+    } catch (error) {
+      console.error('Failed to save content:', error);
+      setSaveMessage('保存失败，请检查网络连接');
+      setTimeout(() => setSaveMessage(null), 3000);
+    } finally {
+      setIsSaving(false);
+    }
+  }, [content, editingValues]);
+
+  // 处理图片上传
   const handleImageUpload = async (item: any, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -1751,9 +1858,15 @@ function ContentManager() {
         body: formDataUpload,
       });
       const data = await res.json();
-      handleUpdate(item, item.value || '', data.url);
+      // 标记有新图片，在保存时使用
+      setContent(prev => prev.map(i =>
+        i.id === item.id ? { ...i, newImage: data.url } : i
+      ));
+      setHasChanges(true);
     } catch (error) {
       console.error('Failed to upload image:', error);
+      setSaveMessage('图片上传失败，请重试');
+      setTimeout(() => setSaveMessage(null), 3000);
     }
   };
 
@@ -1769,41 +1882,111 @@ function ContentManager() {
 
       <div className="flex gap-4 mb-6 flex-wrap">
         <button
-          onClick={() => setActivePage('home')}
+          onClick={() => {
+            if (hasChanges) {
+              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+                setActivePage('home');
+              }
+            } else {
+              setActivePage('home');
+            }
+          }}
           className={`px-4 py-2 rounded-lg ${activePage === 'home' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
           首页
         </button>
         <button
-          onClick={() => setActivePage('about')}
+          onClick={() => {
+            if (hasChanges) {
+              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+                setActivePage('about');
+              }
+            } else {
+              setActivePage('about');
+            }
+          }}
           className={`px-4 py-2 rounded-lg ${activePage === 'about' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
           关于我们
         </button>
         <button
-          onClick={() => setActivePage('contact')}
+          onClick={() => {
+            if (hasChanges) {
+              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+                setActivePage('contact');
+              }
+            } else {
+              setActivePage('contact');
+            }
+          }}
           className={`px-4 py-2 rounded-lg ${activePage === 'contact' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
           联系我们
         </button>
         <button
-          onClick={() => setActivePage('industries')}
+          onClick={() => {
+            if (hasChanges) {
+              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+                setActivePage('industries');
+              }
+            } else {
+              setActivePage('industries');
+            }
+          }}
           className={`px-4 py-2 rounded-lg ${activePage === 'industries' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
           行业
         </button>
         <button
-          onClick={() => setActivePage('sustainability')}
+          onClick={() => {
+            if (hasChanges) {
+              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+                setActivePage('sustainability');
+              }
+            } else {
+              setActivePage('sustainability');
+            }
+          }}
           className={`px-4 py-2 rounded-lg ${activePage === 'sustainability' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
           环保
         </button>
         <button
-          onClick={() => setActivePage('footer')}
+          onClick={() => {
+            if (hasChanges) {
+              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+                setActivePage('footer');
+              }
+            } else {
+              setActivePage('footer');
+            }
+          }}
           className={`px-4 py-2 rounded-lg ${activePage === 'footer' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
           页脚
         </button>
+      </div>
+
+      {saveMessage && (
+        <div className={`mb-6 p-4 rounded-lg ${saveMessage.includes('成功') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+          {saveMessage}
+        </div>
+      )}
+
+      <div className="mb-6 flex gap-4">
+        <button
+          onClick={handleSaveAll}
+          disabled={!hasChanges || isSaving}
+          className={`px-6 py-3 rounded-lg font-medium ${hasChanges && !isSaving
+            ? 'bg-primary-600 text-white hover:bg-primary-700'
+            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+          }`}
+        >
+          {isSaving ? '保存中...' : '保存所有修改'}
+        </button>
+        {hasChanges && (
+          <span className="text-orange-600 font-medium">您有未保存的修改</span>
+        )}
       </div>
 
       {Object.entries(groupedContent).map(([section, items]: [string, any]) => (
@@ -1824,15 +2007,24 @@ function ContentManager() {
                         onChange={(e) => handleImageUpload(item, e)}
                         className="flex-1"
                       />
-                      {item.image && (
-                        <img src={item.image} alt="预览" className="w-16 h-16 object-cover rounded" />
+                      {item.newImage || item.image ? (
+                        <img src={item.newImage || item.image} alt="预览" className="w-16 h-16 object-cover rounded" />
+                      ) : (
+                        <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">
+                          无图片
+                        </div>
+                      )}
+                      {(item.newImage || item.image) && (
+                        <span className="text-xs text-green-600">
+                          {item.newImage ? '新图片' : '当前图片'}
+                        </span>
                       )}
                     </div>
                   ) : (
                     <input
                       type="text"
-                      value={item.value || ''}
-                      onChange={(e) => handleUpdate(item, e.target.value)}
+                      value={editingValues[item.id] || ''}
+                      onChange={(e) => handleInputChange(item.id, e.target.value)}
                       className="input-field w-full"
                       placeholder={`请输入${getLabel(item.section, item.key)}`}
                     />

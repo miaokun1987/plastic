@@ -323,6 +323,6 @@ export const getStaticProps: GetStaticProps = async () => {
       content,
     },
     // ISR: 每 60 秒重新验证
-    revalidate: 60,
+    revalidate: process.env.NODE_ENV === 'production' ? 60 : 0,
   };
 };

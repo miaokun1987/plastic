@@ -535,7 +535,7 @@ export const dbHelpers = {
   },
 
   createProduct: (data: any) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const newId = Math.max(...db.products.map((p) => p.id), 0) + 1;
     const newProduct: Product = {
       id: newId,
@@ -562,7 +562,7 @@ export const dbHelpers = {
   },
 
   updateProduct: (slug: string, data: any) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const index = db.products.findIndex((p) => p.slug === slug);
     if (index === -1) return false;
     db.products[index] = {
@@ -587,7 +587,7 @@ export const dbHelpers = {
   },
 
   deleteProduct: (slug: string) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const index = db.products.findIndex((p) => p.slug === slug);
     if (index === -1) return false;
     db.products.splice(index, 1);
@@ -610,7 +610,7 @@ export const dbHelpers = {
   },
 
   createCategory: (data: any) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const newId = Math.max(...db.categories.map((c) => c.id), 0) + 1;
     const newCategory: Category = {
       id: newId,
@@ -627,7 +627,7 @@ export const dbHelpers = {
   },
 
   updateCategory: (id: number, data: any) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const index = db.categories.findIndex((c) => c.id === id);
     if (index === -1) return false;
     db.categories[index] = {
@@ -643,7 +643,7 @@ export const dbHelpers = {
   },
 
   deleteCategory: (id: number) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const index = db.categories.findIndex((c) => c.id === id);
     if (index === -1) return false;
     db.categories.splice(index, 1);
@@ -666,7 +666,7 @@ export const dbHelpers = {
   },
 
   createIndustry: (data: any) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const newId = Math.max(...db.industries.map((i) => i.id), 0) + 1;
     const newIndustry: Industry = {
       id: newId,
@@ -683,7 +683,7 @@ export const dbHelpers = {
   },
 
   updateIndustry: (id: number, data: any) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const index = db.industries.findIndex((i) => i.id === id);
     if (index === -1) return false;
     db.industries[index] = {
@@ -699,7 +699,7 @@ export const dbHelpers = {
   },
 
   deleteIndustry: (id: number) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const index = db.industries.findIndex((i) => i.id === id);
     if (index === -1) return false;
     db.industries.splice(index, 1);
@@ -725,7 +725,7 @@ export const dbHelpers = {
   },
 
   createBanner: (data: any) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const newId = Math.max(...db.banners.map((b) => b.id), 0) + 1;
     const newBanner: Banner = {
       id: newId,
@@ -745,7 +745,7 @@ export const dbHelpers = {
   },
 
   updateBanner: (id: number, data: any) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const index = db.banners.findIndex((b) => b.id === id);
     if (index === -1) return false;
     db.banners[index] = {
@@ -764,7 +764,7 @@ export const dbHelpers = {
   },
 
   deleteBanner: (id: number) => {
-    const db = getDatabaseContent();
+    const db = getDatabase();
     const index = db.banners.findIndex((b) => b.id === id);
     if (index === -1) return false;
     db.banners.splice(index, 1);
@@ -788,18 +788,19 @@ export const dbHelpers = {
   },
 
   saveContent: (page: string, section: string, key: string, value: string, image?: string) => {
-    const db = getDatabaseContent();
-    const existingIndex = db.siteContent.findIndex((c) => c.page === page && c.section === section && c.key === key);
+    // 获取全局 db 对象并更新
+    const currentDb = getDatabase();
+    const existingIndex = currentDb.siteContent.findIndex((c) => c.page === page && c.section === section && c.key === key);
     if (existingIndex !== -1) {
-      db.siteContent[existingIndex] = {
-        ...db.siteContent[existingIndex],
+      currentDb.siteContent[existingIndex] = {
+        ...currentDb.siteContent[existingIndex],
         value: value,
-        image: image !== undefined ? image : db.siteContent[existingIndex].image,
-        createdAt: db.siteContent[existingIndex].createdAt,
+        image: image !== undefined ? image : currentDb.siteContent[existingIndex].image,
+        createdAt: currentDb.siteContent[existingIndex].createdAt,
       };
     } else {
-      const newId = Math.max(...db.siteContent.map((c) => c.id), 0) + 1;
-      db.siteContent.push({
+      const newId = Math.max(...currentDb.siteContent.map((c) => c.id), 0) + 1;
+      currentDb.siteContent.push({
         id: newId,
         page,
         section,

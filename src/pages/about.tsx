@@ -260,6 +260,6 @@ export const getStaticProps: GetStaticProps = async () => {
       content,
       aboutData,
     },
-    revalidate: 60,
+    revalidate: process.env.NODE_ENV === 'production' ? 60 : 0,
   };
 };

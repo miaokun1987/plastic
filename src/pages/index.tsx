@@ -389,7 +389,8 @@ export const getStaticProps: GetStaticProps = async () => {
       featuredProducts,
       content,
     },
-    // ISR: 每 60 秒重新验证并重新生成页面
-    revalidate: 60,
+    // 开发环境下不使用 ISR，每次请求都重新获取数据
+    // 生产环境下每 60 秒重新验证并重新生成页面
+    revalidate: process.env.NODE_ENV === 'production' ? 60 : 0,
   };
 };
