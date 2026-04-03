@@ -25,7 +25,7 @@ export default function AdminLogin() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || '登录失败');
+        setError(data.error || 'Login failed');
         setLoading(false);
         return;
       }
@@ -34,7 +34,7 @@ export default function AdminLogin() {
       localStorage.setItem('user', JSON.stringify(data.user));
       router.push('/admin');
     } catch {
-      setError('登录失败，请稍后重试');
+      setError('Login failed, please try again later');
       setLoading(false);
     }
   };
@@ -42,13 +42,13 @@ export default function AdminLogin() {
   return (
     <>
       <Head>
-        <title>管理员登录 - 塑袋包装</title>
+        <title>Admin Login - Plastic Packaging</title>
       </Head>
       <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-primary-600">塑袋包装</h1>
-            <p className="mt-2 text-gray-600">后台管理系统</p>
+            <h1 className="text-3xl font-bold text-primary-600">Plastic Packaging</h1>
+            <p className="mt-2 text-gray-600">Admin Dashboard</p>
           </div>
         </div>
 
@@ -57,7 +57,7 @@ export default function AdminLogin() {
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                  用户名
+                  Username
                 </label>
                 <div className="mt-1">
                   <input
@@ -75,7 +75,7 @@ export default function AdminLogin() {
 
               <div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  密码
+                  Password
                 </label>
                 <div className="mt-1">
                   <input
@@ -103,14 +103,14 @@ export default function AdminLogin() {
                   disabled={loading}
                   className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {loading ? '登录中...' : '登录'}
+                  {loading ? 'Logging in...' : 'Login'}
                 </button>
               </div>
             </form>
 
             <div className="mt-6 text-center">
               <Link href="/" className="text-primary-600 hover:text-primary-500 text-sm">
-                返回前台首页
+                Return to Homepage
               </Link>
             </div>
           </div>

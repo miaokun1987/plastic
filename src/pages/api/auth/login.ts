@@ -13,20 +13,20 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    return res.status(400).json({ error: '用户名和密码不能为空' });
+    return res.status(400).json({ error: 'Username and password cannot be empty' });
   }
 
   try {
     const user = dbHelpers.getUserByUsername(username);
 
     if (!user) {
-      return res.status(401).json({ error: '用户名或密码错误' });
+      return res.status(401).json({ error: 'Invalid username or password' });
     }
 
     const isValid = bcrypt.compareSync(password, user.password);
 
     if (!isValid) {
-      return res.status(401).json({ error: '用户名或密码错误' });
+      return res.status(401).json({ error: 'Invalid username or password' });
     }
 
     const token = jwt.sign({ userId: user.id, username: user.username }, JWT_SECRET, { expiresIn: '7d' });
@@ -34,6 +34,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     res.status(200).json({ token, user: { id: user.id, username: user.username } });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ error: '服务器错误' });
+    res.status(500).json({ error: 'Server error' });
   }
 }

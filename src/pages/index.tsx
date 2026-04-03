@@ -46,8 +46,8 @@ export default function Home({ banners, categories, featuredProducts, content }:
   return (
     <>
       <Head>
-        <title>{content['header_logo'] || '塑袋包装'} - 专业塑料包装解决方案</title>
-        <meta name="description" content="专业塑料包装制造商，提供平口袋、站立袋、拉链袋、收缩膜等包装产品" />
+        <title>{content['header_logo'] || 'Plastic Packaging'} - Professional Plastic Packaging Solutions</title>
+        <meta name="description" content="Professional plastic packaging manufacturer, providing lay flat pouches, stand up pouches, zipper pouches, shrink film and other packaging products" />
       </Head>
 
       {/* Header */}
@@ -73,7 +73,7 @@ export default function Home({ banners, categories, featuredProducts, content }:
                 <p className="text-xl md:text-2xl mb-8">{banners[0].subtitle}</p>
                 <p className="text-lg mb-8 max-w-2xl">{banners[0].description}</p>
                 <Link href={banners[0].link || '/products'} className="btn-secondary">
-                  {banners[0].button_text || '了解更多'}
+                  {banners[0].button_text || 'Learn More'}
                 </Link>
               </>
             )}
@@ -85,8 +85,8 @@ export default function Home({ banners, categories, featuredProducts, content }:
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="section-title">产品分类</h2>
-            <p className="section-subtitle">我们提供多种类型的塑料包装解决方案</p>
+            <h2 className="section-title">Product Categories</h2>
+            <p className="section-subtitle">We provide various types of plastic packaging solutions</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category) => (
@@ -116,8 +116,8 @@ export default function Home({ banners, categories, featuredProducts, content }:
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="section-title">推荐产品</h2>
-            <p className="section-subtitle">精选优质包装产品，满足您的各种需求</p>
+            <h2 className="section-title">Featured Products</h2>
+            <p className="section-subtitle">Selected quality packaging products to meet your various needs</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProducts.map((product) => (
@@ -143,7 +143,7 @@ export default function Home({ banners, categories, featuredProducts, content }:
           </div>
           <div className="text-center mt-8">
             <Link href="/products" className="btn-outline">
-              查看所有产品
+              View All Products
             </Link>
           </div>
         </div>
@@ -154,18 +154,18 @@ export default function Home({ banners, categories, featuredProducts, content }:
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="section-title">{content['about_title'] || '关于我们'}</h2>
+              <h2 className="section-title">{content['about_title'] || 'About Us'}</h2>
               <p className="text-lg text-gray-600 mb-6">
-                {content['about_description'] || '我们是专业的塑料包装解决方案提供商...'}
+                {content['about_description'] || 'We are a professional plastic packaging solution provider...'}
               </p>
               <Link href="/about" className="btn-primary">
-                了解更多
+                Learn More
               </Link>
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
               <img
                 src={content['about_image'] || '/images/about-placeholder.svg'}
-                alt="关于我们"
+                alt="About Us"
                 className="w-full h-96 object-cover"
               />
             </div>
@@ -177,7 +177,7 @@ export default function Home({ banners, categories, featuredProducts, content }:
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="section-title">{content['features_title'] || '为什么选择我们'}</h2>
+            <h2 className="section-title">{content['features_title'] || 'Why Choose Us'}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -202,13 +202,13 @@ export default function Home({ banners, categories, featuredProducts, content }:
       <section className="py-16 bg-primary-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {content['cta_title'] || '开始您的包装项目'}
+            {content['cta_title'] || 'Start Your Packaging Project'}
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            {content['cta_description'] || '联系我们获取免费样品和报价'}
+            {content['cta_description'] || 'Contact us for free samples and quotes'}
           </p>
           <Link href="/contact" className="btn-secondary">
-            {content['cta_button_text'] || '获取报价'}
+            {content['cta_button_text'] || 'Get Quote'}
           </Link>
         </div>
       </section>
@@ -228,28 +228,28 @@ function Header({ content }: { content: Content }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold text-primary-600">
-            {content['header_logo'] || '塑袋包装'}
+            {content['header_logo'] || 'Plastic Packaging'}
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-gray-700 hover:text-primary-600">
-              首页
+              Home
             </Link>
             <Link href="/products" className="text-gray-700 hover:text-primary-600">
-              产品中心
+              Products
             </Link>
             <Link href="/industries" className="text-gray-700 hover:text-primary-600">
-              行业
+              Industries
             </Link>
             <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">
-              环保
+              Sustainability
             </Link>
             <Link href="/about" className="text-gray-700 hover:text-primary-600">
-              关于我们
+              About Us
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-primary-600">
-              联系我们
+              Contact Us
             </Link>
           </nav>
 
@@ -272,12 +272,12 @@ function Header({ content }: { content: Content }) {
         {mobileMenuOpen && (
           <nav className="md:hidden py-4 border-t">
             <div className="flex flex-col gap-4">
-              <Link href="/" className="text-gray-700 hover:text-primary-600">首页</Link>
-              <Link href="/products" className="text-gray-700 hover:text-primary-600">产品中心</Link>
-              <Link href="/industries" className="text-gray-700 hover:text-primary-600">行业</Link>
-              <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">环保</Link>
-              <Link href="/about" className="text-gray-700 hover:text-primary-600">关于我们</Link>
-              <Link href="/contact" className="text-gray-700 hover:text-primary-600">联系我们</Link>
+              <Link href="/" className="text-gray-700 hover:text-primary-600">Home</Link>
+              <Link href="/products" className="text-gray-700 hover:text-primary-600">Products</Link>
+              <Link href="/industries" className="text-gray-700 hover:text-primary-600">Industries</Link>
+              <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">Sustainability</Link>
+              <Link href="/about" className="text-gray-700 hover:text-primary-600">About Us</Link>
+              <Link href="/contact" className="text-gray-700 hover:text-primary-600">Contact Us</Link>
             </div>
           </nav>
         )}
@@ -293,11 +293,11 @@ function Footer({ content }: { content: Content }) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">{content['company_name'] || '塑袋包装科技有限公司'}</h3>
+            <h3 className="text-xl font-bold mb-4">{content['company_name'] || 'Plastic Packaging Technology Co., Ltd.'}</h3>
             <div className="space-y-2 text-gray-400">
               <p>{content['company_address']}</p>
-              <p>电话: {content['company_phone']}</p>
-              <p>邮箱: {content['company_email']}</p>
+              <p>Phone: {content['company_phone']}</p>
+              <p>Email: {content['company_email']}</p>
               {content['social_linkedin'] && <p>LinkedIn: {content['social_linkedin']}</p>}
               {content['social_facebook'] && <p>Facebook: {content['social_facebook']}</p>}
               {content['social_instagram'] && <p>Instagram: {content['social_instagram']}</p>}
@@ -306,31 +306,31 @@ function Footer({ content }: { content: Content }) {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">快速链接</h4>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/" className="text-gray-400 hover:text-white">首页</Link>
-              <Link href="/products" className="text-gray-400 hover:text-white">产品中心</Link>
-              <Link href="/industries" className="text-gray-400 hover:text-white">行业</Link>
-              <Link href="/sustainability" className="text-gray-400 hover:text-white">环保</Link>
-              <Link href="/about" className="text-gray-400 hover:text-white">关于我们</Link>
-              <Link href="/contact" className="text-gray-400 hover:text-white">联系我们</Link>
+              <Link href="/" className="text-gray-400 hover:text-white">Home</Link>
+              <Link href="/products" className="text-gray-400 hover:text-white">Products</Link>
+              <Link href="/industries" className="text-gray-400 hover:text-white">Industries</Link>
+              <Link href="/sustainability" className="text-gray-400 hover:text-white">Sustainability</Link>
+              <Link href="/about" className="text-gray-400 hover:text-white">About Us</Link>
+              <Link href="/contact" className="text-gray-400 hover:text-white">Contact Us</Link>
             </nav>
           </div>
 
           {/* Products */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">产品分类</h4>
+            <h4 className="text-lg font-semibold mb-4">Product Categories</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">平口袋</Link>
-              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">站立袋</Link>
-              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">拉链袋</Link>
-              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">收缩膜</Link>
+              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">Lay Flat Pouches</Link>
+              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">Stand Up Pouches</Link>
+              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">Zipper Pouches</Link>
+              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">Shrink Film</Link>
             </nav>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>{content['copyright_text'] || '© 2024 塑袋包装科技有限公司 版权所有'}</p>
+          <p>{content['copyright_text'] || '© 2024 Plastic Packaging Technology Co., Ltd. All Rights Reserved'}</p>
         </div>
       </div>
     </footer>

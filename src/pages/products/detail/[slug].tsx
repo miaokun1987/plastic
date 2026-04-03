@@ -47,7 +47,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
   return (
     <>
       <Head>
-        <title>{product.meta_title || product.name} - {content['header_logo'] || '塑袋包装'}</title>
+        <title>{product.meta_title || product.name} - {content['header_logo'] || 'Plastic Packaging'}</title>
         <meta name="description" content={product.meta_description || product.short_description} />
       </Head>
 
@@ -58,9 +58,9 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
       <div className="bg-gray-100 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-gray-500 hover:text-primary-600">首页</Link>
+            <Link href="/" className="text-gray-500 hover:text-primary-600">Home</Link>
             <span className="text-gray-400">/</span>
-            <Link href="/products" className="text-gray-500 hover:text-primary-600">产品中心</Link>
+            <Link href="/products" className="text-gray-500 hover:text-primary-600">Products</Link>
             <span className="text-gray-400">/</span>
             {product.category_slug && (
               <>
@@ -112,7 +112,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
               {/* Features */}
               {features.length > 0 && (
                 <div className="mb-8">
-                  <h3 className="text-lg font-semibold mb-4">产品特点</h3>
+                  <h3 className="text-lg font-semibold mb-4">Product Features</h3>
                   <ul className="grid grid-cols-2 gap-3">
                     {features.map((feature: string, index: number) => (
                       <li key={index} className="flex items-center gap-2">
@@ -129,16 +129,16 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 mb-8">
                 <Link href="/contact" className="btn-primary">
-                  获取报价
+                  Get Quote
                 </Link>
                 <Link href="/contact" className="btn-outline">
-                  下载产品资料
+                  Download Product Materials
                 </Link>
               </div>
 
               {/* Contact Info */}
               <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-lg font-semibold mb-4">联系我们</h3>
+                <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +169,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
                       : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
-                  产品描述
+                  Product Description
                 </button>
                 <button
                   onClick={() => setActiveTab('specs')}
@@ -179,7 +179,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
                       : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
-                  技术规格
+                  Technical Specifications
                 </button>
                 <button
                   onClick={() => setActiveTab('diagram')}
@@ -189,14 +189,14 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
                       : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
-                  产品示意图
+                  Product Diagram
                 </button>
               </nav>
             </div>
             <div className="py-8">
               {activeTab === 'description' && (
                 <div className="prose max-w-none">
-                  <h2 className="text-2xl font-bold mb-4">产品描述</h2>
+                  <h2 className="text-2xl font-bold mb-4">Product Description</h2>
                   <p className="text-gray-600 leading-relaxed">{product.description}</p>
                 </div>
               )}
@@ -205,7 +205,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
                 <>
                   {specifications.length > 0 ? (
                     <div>
-                      <h3 className="text-xl font-bold mb-4">技术规格</h3>
+                      <h3 className="text-xl font-bold mb-4">Technical Specifications</h3>
                       <div className="bg-gray-50 rounded-xl overflow-hidden">
                         <table className="w-full">
                           <tbody className="divide-y divide-gray-200">
@@ -221,7 +221,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
                     </div>
                   ) : (
                     <div className="text-center py-8 text-gray-500">
-                      暂无技术规格信息
+                      No technical specifications available
                     </div>
                   )}
                 </>
@@ -229,12 +229,12 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
 
               {activeTab === 'diagram' && (
                 <div>
-                  <h3 className="text-xl font-bold mb-4">产品示意图</h3>
+                  <h3 className="text-xl font-bold mb-4">Product Diagram</h3>
 
                   {/* 产品示意图描述 */}
                   <div className="prose max-w-none mb-8">
                     <p className="text-gray-600 leading-relaxed">
-                      {product.diagram_description || '本产品采用优质原材料精制而成，具有良好的密封性能和耐用性。产品结构设计合理，适用于多种包装场景。下方示意图展示了产品的主要结构参数和尺寸规格，您可以根据实际需求选择合适的规格型号。如需定制特殊规格，请联系我们的客服团队。'}
+                      {product.diagram_description || 'This product is made from high-quality raw materials with excellent sealing performance and durability. The product structure is reasonably designed and suitable for various packaging scenarios. The diagram below shows the main structural parameters and size specifications of the product. You can choose the appropriate specifications according to your actual needs. If you need custom specifications, please contact our customer service team.'}
                     </p>
                   </div>
 
@@ -243,7 +243,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
                     <div className="bg-gray-50 rounded-xl p-6">
                       <img
                         src={product.diagram_image}
-                        alt={`${product.name} 产品示意图`}
+                        alt={`${product.name} Product Diagram`}
                         className="w-full max-w-2xl mx-auto rounded-lg"
                       />
                     </div>
@@ -251,7 +251,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
                     <div className="bg-gray-50 rounded-xl p-6">
                       <img
                         src="/images/product-diagram-placeholder.svg"
-                        alt="产品示意图"
+                        alt="Product Diagram"
                         className="w-full max-w-2xl mx-auto rounded-lg"
                       />
                     </div>
@@ -267,7 +267,7 @@ export default function ProductDetailPage({ product, relatedProducts, content }:
       {relatedProducts.length > 0 && (
         <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold mb-8">相关产品</h2>
+            <h2 className="text-2xl font-bold mb-8">Related Products</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedProducts.map((relatedProduct) => (
                 <Link
@@ -305,15 +305,15 @@ function Header({ content }: { content: { [key: string]: string } }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold text-primary-600">
-            {content['header_logo'] || '塑袋包装'}
+            {content['header_logo'] || 'Plastic Packaging'}
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-gray-700 hover:text-primary-600">首页</Link>
-            <Link href="/products" className="text-primary-600 font-medium">产品中心</Link>
-            <Link href="/industries" className="text-gray-700 hover:text-primary-600">行业</Link>
-            <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">环保</Link>
-            <Link href="/about" className="text-gray-700 hover:text-primary-600">关于我们</Link>
-            <Link href="/contact" className="text-gray-700 hover:text-primary-600">联系我们</Link>
+            <Link href="/" className="text-gray-700 hover:text-primary-600">Home</Link>
+            <Link href="/products" className="text-primary-600 font-medium">Products</Link>
+            <Link href="/industries" className="text-gray-700 hover:text-primary-600">Industries</Link>
+            <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">Sustainability</Link>
+            <Link href="/about" className="text-gray-700 hover:text-primary-600">About Us</Link>
+            <Link href="/contact" className="text-gray-700 hover:text-primary-600">Contact Us</Link>
           </nav>
         </div>
       </div>
@@ -327,39 +327,39 @@ function Footer({ content }: { content: { [key: string]: string } }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">{content['company_name'] || '塑袋包装科技有限公司'}</h3>
+            <h3 className="text-xl font-bold mb-4">{content['company_name'] || 'Plastic Packaging Technology Co., Ltd.'}</h3>
             <div className="space-y-2 text-gray-400">
               <p>{content['company_address']}</p>
-              <p>电话: {content['company_phone']}</p>
-              <p>邮箱: {content['company_email']}</p>
+              <p>Phone: {content['company_phone']}</p>
+              <p>Email: {content['company_email']}</p>
               {content['social_linkedin'] && <p>LinkedIn: {content['social_linkedin']}</p>}
               {content['social_facebook'] && <p>Facebook: {content['social_facebook']}</p>}
               {content['social_instagram'] && <p>Instagram: {content['social_instagram']}</p>}
             </div>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">快速链接</h4>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/" className="text-gray-400 hover:text-white">首页</Link>
-              <Link href="/products" className="text-gray-400 hover:text-white">产品中心</Link>
-              <Link href="/industries" className="text-gray-400 hover:text-white">行业</Link>
-              <Link href="/sustainability" className="text-gray-400 hover:text-white">环保</Link>
-              <Link href="/about" className="text-gray-400 hover:text-white">关于我们</Link>
-              <Link href="/contact" className="text-gray-400 hover:text-white">联系我们</Link>
+              <Link href="/" className="text-gray-400 hover:text-white">Home</Link>
+              <Link href="/products" className="text-gray-400 hover:text-white">Products</Link>
+              <Link href="/industries" className="text-gray-400 hover:text-white">Industries</Link>
+              <Link href="/sustainability" className="text-gray-400 hover:text-white">Sustainability</Link>
+              <Link href="/about" className="text-gray-400 hover:text-white">About Us</Link>
+              <Link href="/contact" className="text-gray-400 hover:text-white">Contact Us</Link>
             </nav>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">产品分类</h4>
+            <h4 className="text-lg font-semibold mb-4">Product Categories</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">平口袋</Link>
-              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">站立袋</Link>
-              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">拉链袋</Link>
-              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">收缩膜</Link>
+              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">Lay Flat Pouches</Link>
+              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">Stand-up Pouches</Link>
+              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">Zipper Pouches</Link>
+              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">Shrink Film</Link>
             </nav>
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>{content['copyright_text'] || '© 2024 塑袋包装科技有限公司 版权所有'}</p>
+          <p>{content['copyright_text'] || '© 2024 Plastic Packaging Technology Co., Ltd. All rights reserved'}</p>
         </div>
       </div>
     </footer>

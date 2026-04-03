@@ -28,8 +28,8 @@ export default function ContactPage({ content }: Props) {
   return (
     <>
       <Head>
-        <title>联系我们 - {content['header_logo'] || '塑袋包装'}</title>
-        <meta name="description" content="联系塑袋包装科技有限公司获取包装解决方案和报价" />
+        <title>Contact Us - {content['header_logo'] || 'Plastic Packaging'}</title>
+        <meta name="description" content="Contact Plastic Packaging Technology Co., Ltd. for packaging solutions and quotes" />
       </Head>
 
       {/* Header */}
@@ -38,8 +38,8 @@ export default function ContactPage({ content }: Props) {
       {/* Page Header */}
       <section className="bg-primary-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">联系我们</h1>
-          <p className="text-xl opacity-90">我们期待与您的合作</p>
+          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+          <p className="text-xl opacity-90">We Look Forward to Working With You</p>
         </div>
       </section>
 
@@ -49,17 +49,17 @@ export default function ContactPage({ content }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">获取报价</h2>
+              <h2 className="text-2xl font-bold mb-6">Get a Quote</h2>
               {submitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
                   <div className="text-green-500 text-6xl mb-4">✓</div>
-                  <h3 className="text-xl font-semibold text-green-800 mb-2">提交成功!</h3>
-                  <p className="text-green-600">我们的工作人员将在24小时内与您联系。</p>
+                  <h3 className="text-xl font-semibold text-green-800 mb-2">Submitted Successfully!</h3>
+                  <p className="text-green-600">Our staff will contact you within 24 hours.</p>
                   <button
                     onClick={() => setSubmitted(false)}
                     className="mt-4 text-primary-600 hover:text-primary-700"
                   >
-                    继续提交新的咨询
+                    Submit Another Inquiry
                   </button>
                 </div>
               ) : (
@@ -67,7 +67,7 @@ export default function ContactPage({ content }: Props) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        姓名 *
+                        Name *
                       </label>
                       <input
                         type="text"
@@ -75,26 +75,26 @@ export default function ContactPage({ content }: Props) {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="input-field"
-                        placeholder="请输入您的姓名"
+                        placeholder="Please enter your name"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        公司名称
+                        Company Name
                       </label>
                       <input
                         type="text"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         className="input-field"
-                        placeholder="请输入公司名称"
+                        placeholder="Please enter company name"
                       />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        邮箱 *
+                        Email *
                       </label>
                       <input
                         type="email"
@@ -102,12 +102,12 @@ export default function ContactPage({ content }: Props) {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="input-field"
-                        placeholder="请输入您的邮箱"
+                        placeholder="Please enter your email"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        电话 *
+                        Phone *
                       </label>
                       <input
                         type="tel"
@@ -115,32 +115,32 @@ export default function ContactPage({ content }: Props) {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="input-field"
-                        placeholder="请输入您的电话"
+                        placeholder="Please enter your phone"
                       />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      产品类型
+                      Product Type
                     </label>
                     <select
                       value={formData.product_type}
                       onChange={(e) => setFormData({ ...formData, product_type: e.target.value })}
                       className="input-field"
                     >
-                      <option value="">请选择产品类型</option>
-                      <option value="lay-flat-pouches">平口袋</option>
-                      <option value="stand-up-pouches">站立袋</option>
-                      <option value="zipper-pouches">拉链袋</option>
-                      <option value="shrink-film">收缩膜</option>
-                      <option value="vacuum-pouches">真空袋</option>
-                      <option value="spouted-pouches">带嘴袋</option>
-                      <option value="custom">定制产品</option>
+                      <option value="">Please select product type</option>
+                      <option value="lay-flat-pouches">Lay Flat Pouches</option>
+                      <option value="stand-up-pouches">Stand-up Pouches</option>
+                      <option value="zipper-pouches">Zipper Pouches</option>
+                      <option value="shrink-film">Shrink Film</option>
+                      <option value="vacuum-pouches">Vacuum Pouches</option>
+                      <option value="spouted-pouches">Spouted Pouches</option>
+                      <option value="custom">Custom Products</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      详细需求 *
+                      Detailed Requirements *
                     </label>
                     <textarea
                       required
@@ -148,11 +148,11 @@ export default function ContactPage({ content }: Props) {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="input-field"
-                      placeholder="请描述您的包装需求，如尺寸、材质、数量等..."
+                      placeholder="Please describe your packaging requirements, such as size, material, quantity, etc..."
                     />
                   </div>
                   <button type="submit" className="btn-primary w-full">
-                    提交咨询
+                    Submit Inquiry
                   </button>
                 </form>
               )}
@@ -160,7 +160,7 @@ export default function ContactPage({ content }: Props) {
 
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">联系方式</h2>
+              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
               <div className="space-y-6">
                 <div className="bg-gray-50 rounded-xl p-6">
                   <div className="flex items-start gap-4">
@@ -171,8 +171,8 @@ export default function ContactPage({ content }: Props) {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">公司地址</h3>
-                      <p className="text-gray-600">{content['company_address'] || '中国上海市浦东新区包装产业园88号'}</p>
+                      <h3 className="font-semibold mb-1">Company Address</h3>
+                      <p className="text-gray-600">{content['company_address'] || 'No. 88 Packaging Industrial Park, Pudong New District, Shanghai, China'}</p>
                     </div>
                   </div>
                 </div>
@@ -185,9 +185,9 @@ export default function ContactPage({ content }: Props) {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">联系电话</h3>
+                      <h3 className="font-semibold mb-1">Phone Number</h3>
                       <p className="text-gray-600">{content['header_phone'] || '400-888-8888'}</p>
-                      <p className="text-sm text-gray-500 mt-1">工作时间: 周一至周五 9:00-18:00</p>
+                      <p className="text-sm text-gray-500 mt-1">Business Hours: Monday to Friday 9:00-18:00</p>
                     </div>
                   </div>
                 </div>
@@ -200,9 +200,9 @@ export default function ContactPage({ content }: Props) {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">电子邮箱</h3>
+                      <h3 className="font-semibold mb-1">Email</h3>
                       <p className="text-gray-600">{content['header_email'] || 'info@packaging.com'}</p>
-                      <p className="text-sm text-gray-500 mt-1">我们将在24小时内回复</p>
+                      <p className="text-sm text-gray-500 mt-1">We will reply within 24 hours</p>
                     </div>
                   </div>
                 </div>
@@ -215,9 +215,9 @@ export default function ContactPage({ content }: Props) {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">在线咨询</h3>
-                      <p className="text-gray-600">微信: PackagingPro</p>
-                      <p className="text-sm text-gray-500 mt-1">扫码添加微信获取即时服务</p>
+                      <h3 className="font-semibold mb-1">Online Consultation</h3>
+                      <p className="text-gray-600">WeChat: PackagingPro</p>
+                      <p className="text-sm text-gray-500 mt-1">Scan to add WeChat for instant service</p>
                     </div>
                   </div>
                 </div>
@@ -239,15 +239,15 @@ function Header({ content }: { content: { [key: string]: string } }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold text-primary-600">
-            {content['header_logo'] || '塑袋包装'}
+            {content['header_logo'] || 'Plastic Packaging'}
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-gray-700 hover:text-primary-600">首页</Link>
-            <Link href="/products" className="text-gray-700 hover:text-primary-600">产品中心</Link>
-            <Link href="/industries" className="text-gray-700 hover:text-primary-600">行业</Link>
-            <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">环保</Link>
-            <Link href="/about" className="text-gray-700 hover:text-primary-600">关于我们</Link>
-            <Link href="/contact" className="text-primary-600 font-medium">联系我们</Link>
+            <Link href="/" className="text-gray-700 hover:text-primary-600">Home</Link>
+            <Link href="/products" className="text-gray-700 hover:text-primary-600">Products</Link>
+            <Link href="/industries" className="text-gray-700 hover:text-primary-600">Industries</Link>
+            <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">Sustainability</Link>
+            <Link href="/about" className="text-gray-700 hover:text-primary-600">About Us</Link>
+            <Link href="/contact" className="text-primary-600 font-medium">Contact Us</Link>
           </nav>
         </div>
       </div>
@@ -261,39 +261,39 @@ function Footer({ content }: { content: { [key: string]: string } }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">{content['company_name'] || '塑袋包装科技有限公司'}</h3>
+            <h3 className="text-xl font-bold mb-4">{content['company_name'] || 'Plastic Packaging Technology Co., Ltd.'}</h3>
             <div className="space-y-2 text-gray-400">
               <p>{content['company_address']}</p>
-              <p>电话: {content['company_phone']}</p>
-              <p>邮箱: {content['company_email']}</p>
+              <p>Phone: {content['company_phone']}</p>
+              <p>Email: {content['company_email']}</p>
               {content['social_linkedin'] && <p>LinkedIn: {content['social_linkedin']}</p>}
               {content['social_facebook'] && <p>Facebook: {content['social_facebook']}</p>}
               {content['social_instagram'] && <p>Instagram: {content['social_instagram']}</p>}
             </div>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">快速链接</h4>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/" className="text-gray-400 hover:text-white">首页</Link>
-              <Link href="/products" className="text-gray-400 hover:text-white">产品中心</Link>
-              <Link href="/industries" className="text-gray-400 hover:text-white">行业</Link>
-              <Link href="/sustainability" className="text-gray-400 hover:text-white">环保</Link>
-              <Link href="/about" className="text-gray-400 hover:text-white">关于我们</Link>
-              <Link href="/contact" className="text-gray-400 hover:text-white">联系我们</Link>
+              <Link href="/" className="text-gray-400 hover:text-white">Home</Link>
+              <Link href="/products" className="text-gray-400 hover:text-white">Products</Link>
+              <Link href="/industries" className="text-gray-400 hover:text-white">Industries</Link>
+              <Link href="/sustainability" className="text-gray-400 hover:text-white">Sustainability</Link>
+              <Link href="/about" className="text-gray-400 hover:text-white">About Us</Link>
+              <Link href="/contact" className="text-gray-400 hover:text-white">Contact Us</Link>
             </nav>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">产品分类</h4>
+            <h4 className="text-lg font-semibold mb-4">Product Categories</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">平口袋</Link>
-              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">站立袋</Link>
-              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">拉链袋</Link>
-              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">收缩膜</Link>
+              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">Lay Flat Pouches</Link>
+              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">Stand-up Pouches</Link>
+              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">Zipper Pouches</Link>
+              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">Shrink Film</Link>
             </nav>
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>{content['copyright_text'] || '© 2024 塑袋包装科技有限公司 版权所有'}</p>
+          <p>{content['copyright_text'] || '© 2024 Plastic Packaging Technology Co., Ltd. All rights reserved'}</p>
         </div>
       </div>
     </footer>

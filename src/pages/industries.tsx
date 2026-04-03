@@ -25,8 +25,8 @@ export default function IndustriesPage({ content, industries }: Props) {
   return (
     <>
       <Head>
-        <title>行业应用 - {content['header_logo'] || '塑袋包装'}</title>
-        <meta name="description" content="我们为食品、饮料、医药、化工等多个行业提供专业的包装解决方案" />
+        <title>Industries - {content['header_logo'] || 'Plastic Packaging'}</title>
+        <meta name="description" content="We provide professional packaging solutions for food, beverage, pharmaceutical, chemical and other industries" />
       </Head>
 
       {/* Header */}
@@ -38,10 +38,10 @@ export default function IndustriesPage({ content, industries }: Props) {
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              {content['industries_hero_title'] || '行业应用'}
+              {content['industries_hero_title'] || 'Industries'}
             </h1>
             <p className="text-xl md:text-2xl opacity-90 max-w-2xl">
-              {content['industries_hero_subtitle'] || '为各行各业提供专业包装解决方案'}
+              {content['industries_hero_subtitle'] || 'Providing Professional Packaging Solutions for All Industries'}
             </p>
           </div>
         </div>
@@ -52,11 +52,11 @@ export default function IndustriesPage({ content, industries }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6 text-gray-900">
-              {content['industries_intro_title'] || '专业行业解决方案'}
+              {content['industries_intro_title'] || 'Professional Industry Solutions'}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               {content['industries_intro_description'] ||
-                '我们拥有丰富的行业经验，深入了解不同行业的包装需求。无论是食品保鲜、医药安全还是工业防护，我们都能为您提供最适合的包装方案。'}
+                'We have rich industry experience and deeply understand the packaging needs of different industries. Whether it\'s food preservation, pharmaceutical safety or industrial protection, we can provide you with the most suitable packaging solutions.'}
             </p>
           </div>
         </div>
@@ -66,8 +66,8 @@ export default function IndustriesPage({ content, industries }: Props) {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="section-title">{content['industries_service_intro_title'] || '服务行业'}</h2>
-            <p className="section-subtitle">{content['industries_service_intro_subtitle'] || '我们服务的行业领域'}</p>
+            <h2 className="section-title">{content['industries_service_intro_title'] || 'Industries We Serve'}</h2>
+            <p className="section-subtitle">{content['industries_service_intro_subtitle'] || 'Industries We Serve'}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry) => (
@@ -89,7 +89,7 @@ export default function IndustriesPage({ content, industries }: Props) {
                     href="/contact"
                     className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
                   >
-                    了解更多
+                    Learn More
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -105,7 +105,7 @@ export default function IndustriesPage({ content, industries }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="section-title">{content['industries_why_choose_title'] || '为什么选择我们'}</h2>
+            <h2 className="section-title">{content['industries_why_choose_title'] || 'Why Choose Us'}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center p-6">
@@ -114,8 +114,8 @@ export default function IndustriesPage({ content, industries }: Props) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">行业认证</h3>
-              <p className="text-gray-600">通过 FDA、ISO 等多项国际认证</p>
+              <h3 className="text-lg font-semibold mb-2">Industry Certification</h3>
+              <p className="text-gray-600">Pass multiple international certifications such as FDA, ISO</p>
             </div>
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -123,8 +123,8 @@ export default function IndustriesPage({ content, industries }: Props) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">定制研发</h3>
-              <p className="text-gray-600">针对行业特点定制包装方案</p>
+              <h3 className="text-lg font-semibold mb-2">Custom R&D</h3>
+              <p className="text-gray-600">Customize packaging solutions according to industry characteristics</p>
             </div>
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -132,8 +132,8 @@ export default function IndustriesPage({ content, industries }: Props) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">快速响应</h3>
-              <p className="text-gray-600">24 小时内响应客户需求</p>
+              <h3 className="text-lg font-semibold mb-2">Quick Response</h3>
+              <p className="text-gray-600">Respond to customer needs within 24 hours</p>
             </div>
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -141,8 +141,8 @@ export default function IndustriesPage({ content, industries }: Props) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">全球服务</h3>
-              <p className="text-gray-600">产品远销全球 50 多个国家</p>
+              <h3 className="text-lg font-semibold mb-2">Global Service</h3>
+              <p className="text-gray-600">Products sold to more than 50 countries worldwide</p>
             </div>
           </div>
         </div>
@@ -152,13 +152,13 @@ export default function IndustriesPage({ content, industries }: Props) {
       <section className="py-16 bg-primary-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {content['industries_cta_title'] || '开始您的项目'}
+            {content['industries_cta_title'] || 'Start Your Project'}
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            {content['industries_cta_description'] || '联系我们，获取针对您行业的专业包装方案'}
+            {content['industries_cta_description'] || 'Contact us to get professional packaging solutions for your industry'}
           </p>
           <Link href="/contact" className="btn-secondary">
-            联系我们
+            Contact Us
           </Link>
         </div>
       </section>
@@ -177,28 +177,28 @@ function Header({ content }: { content: Content }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold text-primary-600">
-            {content['header_logo'] || '塑袋包装'}
+            {content['header_logo'] || 'Plastic Packaging'}
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-gray-700 hover:text-primary-600">
-              首页
+              Home
             </Link>
             <Link href="/products" className="text-gray-700 hover:text-primary-600">
-              产品中心
+              Products
             </Link>
             <Link href="/industries" className="text-primary-600 font-medium">
-              行业
+              Industries
             </Link>
             <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">
-              环保
+              Sustainability
             </Link>
             <Link href="/about" className="text-gray-700 hover:text-primary-600">
-              关于我们
+              About Us
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-primary-600">
-              联系我们
+              Contact Us
             </Link>
           </nav>
 
@@ -221,12 +221,12 @@ function Header({ content }: { content: Content }) {
         {mobileMenuOpen && (
           <nav className="md:hidden py-4 border-t">
             <div className="flex flex-col gap-4">
-              <Link href="/" className="text-gray-700 hover:text-primary-600">首页</Link>
-              <Link href="/products" className="text-gray-700 hover:text-primary-600">产品中心</Link>
-              <Link href="/industries" className="text-primary-600 font-medium">行业</Link>
-              <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">环保</Link>
-              <Link href="/about" className="text-gray-700 hover:text-primary-600">关于我们</Link>
-              <Link href="/contact" className="text-gray-700 hover:text-primary-600">联系我们</Link>
+              <Link href="/" className="text-gray-700 hover:text-primary-600">Home</Link>
+              <Link href="/products" className="text-gray-700 hover:text-primary-600">Products</Link>
+              <Link href="/industries" className="text-primary-600 font-medium">Industries</Link>
+              <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">Sustainability</Link>
+              <Link href="/about" className="text-gray-700 hover:text-primary-600">About Us</Link>
+              <Link href="/contact" className="text-gray-700 hover:text-primary-600">Contact Us</Link>
             </div>
           </nav>
         )}
@@ -241,11 +241,11 @@ function Footer({ content }: { content: Content }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">{content['company_name'] || '塑袋包装科技有限公司'}</h3>
+            <h3 className="text-xl font-bold mb-4">{content['company_name'] || 'Plastic Packaging Technology Co., Ltd.'}</h3>
             <div className="space-y-2 text-gray-400">
               <p>{content['company_address']}</p>
-              <p>电话：{content['company_phone']}</p>
-              <p>邮箱：{content['company_email']}</p>
+              <p>Phone: {content['company_phone']}</p>
+              <p>Email: {content['company_email']}</p>
               {content['social_linkedin'] && <p>LinkedIn: {content['social_linkedin']}</p>}
               {content['social_facebook'] && <p>Facebook: {content['social_facebook']}</p>}
               {content['social_instagram'] && <p>Instagram: {content['social_instagram']}</p>}
@@ -253,30 +253,30 @@ function Footer({ content }: { content: Content }) {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">快速链接</h4>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/" className="text-gray-400 hover:text-white">首页</Link>
-              <Link href="/products" className="text-gray-400 hover:text-white">产品中心</Link>
-              <Link href="/industries" className="text-gray-400 hover:text-white">行业</Link>
-              <Link href="/sustainability" className="text-gray-400 hover:text-white">环保</Link>
-              <Link href="/about" className="text-gray-400 hover:text-white">关于我们</Link>
-              <Link href="/contact" className="text-gray-400 hover:text-white">联系我们</Link>
+              <Link href="/" className="text-gray-400 hover:text-white">Home</Link>
+              <Link href="/products" className="text-gray-400 hover:text-white">Products</Link>
+              <Link href="/industries" className="text-gray-400 hover:text-white">Industries</Link>
+              <Link href="/sustainability" className="text-gray-400 hover:text-white">Sustainability</Link>
+              <Link href="/about" className="text-gray-400 hover:text-white">About Us</Link>
+              <Link href="/contact" className="text-gray-400 hover:text-white">Contact Us</Link>
             </nav>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">产品分类</h4>
+            <h4 className="text-lg font-semibold mb-4">Product Categories</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">平口袋</Link>
-              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">站立袋</Link>
-              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">拉链袋</Link>
-              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">收缩膜</Link>
+              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">Lay Flat Pouches</Link>
+              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">Stand-up Pouches</Link>
+              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">Zipper Pouches</Link>
+              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">Shrink Film</Link>
             </nav>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>{content['copyright_text'] || '© 2024 塑袋包装科技有限公司 版权所有'}</p>
+          <p>{content['copyright_text'] || '© 2024 Plastic Packaging Technology Co., Ltd. All rights reserved'}</p>
         </div>
       </div>
     </footer>

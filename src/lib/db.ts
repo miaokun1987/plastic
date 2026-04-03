@@ -180,15 +180,15 @@ function initializeDatabase(): void {
     });
   }
 
-  // 初始化默认分类
+  // Initialize default categories
   if (db.categories.length === 0) {
     const defaultCategories = [
-      { name: '平口袋 (Lay Flat Pouches)', slug: 'lay-flat-pouches', description: '适用于各种产品的平口袋包装解决方案' },
-      { name: '站立袋 (Stand Up Pouches)', slug: 'stand-up-pouches', description: '自站立袋，提供优异的货架展示效果' },
-      { name: '拉链袋 (Zipper Pouches)', slug: 'zipper-pouches', description: '可重复密封的拉链袋包装' },
-      { name: '收缩膜 (Shrink Film)', slug: 'shrink-film', description: '热收缩膜包装材料' },
-      { name: '真空袋 (Vacuum Pouches)', slug: 'vacuum-pouches', description: '真空包装袋，延长产品保质期' },
-      { name: '自立袋 (Spouted Pouches)', slug: 'spouted-pouches', description: '带嘴袋，适用于液体产品包装' },
+      { name: 'Lay Flat Pouches', slug: 'lay-flat-pouches', description: 'Lay flat pouch packaging solutions for various products' },
+      { name: 'Stand Up Pouches', slug: 'stand-up-pouches', description: 'Self-standing pouches providing excellent shelf display effects' },
+      { name: 'Zipper Pouches', slug: 'zipper-pouches', description: 'Resealable zipper pouch packaging' },
+      { name: 'Shrink Film', slug: 'shrink-film', description: 'Heat shrink film packaging material' },
+      { name: 'Vacuum Pouches', slug: 'vacuum-pouches', description: 'Vacuum packaging bags to extend product shelf life' },
+      { name: 'Spouted Pouches', slug: 'spouted-pouches', description: 'Spouted pouches suitable for liquid product packaging' },
     ];
     defaultCategories.forEach((cat, index) => {
       db!.categories.push({
@@ -203,15 +203,15 @@ function initializeDatabase(): void {
     });
   }
 
-  // 初始化默认行业
+  // Initialize default industries
   if (db.industries.length === 0) {
     const defaultIndustries = [
-      { name: '食品行业', slug: 'food', description: '为食品行业提供保鲜、防潮、防氧化的包装解决方案，符合 FDA 食品安全标准。适用于咖啡、坚果、零食、调味品等各类食品。' },
-      { name: '饮料行业', slug: 'beverage', description: '为饮料行业提供专业的液体包装解决方案，包括自立袋、吸管袋等。适用于果汁、茶饮、乳制品、功能饮料等产品。' },
-      { name: '医药行业', slug: 'pharmaceutical', description: '为医药行业提供符合 GMP 标准的药品包装，具有优异的阻隔性和密封性。适用于药片、胶囊、粉末、医疗器械等产品。' },
-      { name: '化工行业', slug: 'chemical', description: '为化工行业提供耐腐蚀、防静电的专业包装解决方案。适用于化工原料、涂料、油墨、清洁剂等产品。' },
-      { name: '农业行业', slug: 'agriculture', description: '为农业行业提供防潮、防霉、防虫的包装解决方案。适用于种子、化肥、农药、饲料等农资产品。' },
-      { name: '宠物食品行业', slug: 'pet-food', description: '为宠物食品行业提供高阻隔、保香性好的专业包装。适用于猫粮、狗粮、宠物零食、宠物罐头等产品。' },
+      { name: 'Food Industry', slug: 'food', description: 'Providing fresh-keeping, moisture-proof, and oxidation-resistant packaging solutions for the food industry, compliant with FDA food safety standards. Suitable for coffee, nuts, snacks, seasonings, and various other food products.' },
+      { name: 'Beverage Industry', slug: 'beverage', description: 'Providing professional liquid packaging solutions for the beverage industry, including stand-up pouches, straw pouches, etc. Suitable for juices, tea drinks, dairy products, functional beverages, and other products.' },
+      { name: 'Pharmaceutical Industry', slug: 'pharmaceutical', description: 'Providing pharmaceutical packaging compliant with GMP standards, with excellent barrier and sealing properties. Suitable for tablets, capsules, powders, medical devices, and other products.' },
+      { name: 'Chemical Industry', slug: 'chemical', description: 'Providing professional packaging solutions for the chemical industry with corrosion resistance and anti-static properties. Suitable for chemical raw materials, coatings, inks, cleaning agents, and other products.' },
+      { name: 'Agriculture Industry', slug: 'agriculture', description: 'Providing moisture-proof, mildew-proof, and insect-proof packaging solutions for the agriculture industry. Suitable for seeds, fertilizers, pesticides, feed, and other agricultural products.' },
+      { name: 'Pet Food Industry', slug: 'pet-food', description: 'Providing professional packaging with high barrier and excellent fragrance retention for the pet food industry. Suitable for cat food, dog food, pet snacks, pet canned food, and other products.' },
     ];
     defaultIndustries.forEach((ind, index) => {
       db!.industries.push({
@@ -226,97 +226,97 @@ function initializeDatabase(): void {
     });
   }
 
-  // 初始化默认产品
+  // Initialize default products
   if (db.products.length === 0) {
     const defaultProducts = [
       {
-        name: '食品级平口袋',
+        name: 'Food Grade Lay Flat Pouch',
         slug: 'food-grade-lay-flat-pouch',
         categoryId: 1,
-        shortDescription: '专为食品行业设计的高品质平口袋包装',
-        description: '我们的食品级平口袋采用优质原材料制造，符合FDA食品安全标准。适用于咖啡、坚果、干果、茶叶等各种食品包装。可定制各种尺寸、厚度和印刷图案。',
-        features: JSON.stringify(['食品级材料', '防潮防氧化', '可定制印刷', '多种尺寸可选', '环保可回收']),
+        shortDescription: 'High-quality lay flat pouch packaging designed specifically for the food industry',
+        description: 'Our food-grade lay flat pouches are made from premium raw materials and comply with FDA food safety standards. Suitable for packaging coffee, nuts, dried fruits, tea, and various other food products. Customizable sizes, thicknesses, and printing patterns.',
+        features: JSON.stringify(['Food Grade Material', 'Moisture and Oxidation Resistant', 'Customizable Printing', 'Multiple Sizes Available', 'Eco-friendly and Recyclable']),
         specifications: JSON.stringify([
-          { name: '材质', value: 'PET/AL/PE, PET/PE, BOPP/PE' },
-          { name: '厚度', value: '50-150微米' },
-          { name: '尺寸', value: '可定制' },
-          { name: '印刷', value: '支持8色凹版印刷' },
-          { name: '认证', value: 'FDA, QS, ISO9001' },
+          { name: 'Material', value: 'PET/AL/PE, PET/PE, BOPP/PE' },
+          { name: 'Thickness', value: '50-150 microns' },
+          { name: 'Size', value: 'Customizable' },
+          { name: 'Printing', value: 'Supports 8-color gravure printing' },
+          { name: 'Certifications', value: 'FDA, QS, ISO9001' },
         ]),
       },
       {
-        name: '工业用重型平口袋',
+        name: 'Industrial Heavy Duty Lay Flat Pouch',
         slug: 'industrial-heavy-duty-lay-flat-pouch',
         categoryId: 1,
-        shortDescription: '适用于工业产品的耐用平口袋',
-        description: '工业用重型平口袋采用加厚材料设计，具有优异的耐磨性和承重能力。适用于化工原料、五金配件、建筑材料等产品的包装。',
-        features: JSON.stringify(['高承重能力', '耐磨耐撕裂', '防静电可选', '防潮防水', '批量优惠']),
+        shortDescription: 'Durable lay flat pouch suitable for industrial products',
+        description: 'Industrial heavy duty lay flat pouches are designed with thickened materials, offering excellent wear resistance and load-bearing capacity. Suitable for packaging chemical raw materials, hardware accessories, building materials, and other products.',
+        features: JSON.stringify(['High Load Capacity', 'Wear and Tear Resistant', 'Anti-static Optional', 'Moisture and Water Proof', 'Bulk Discounts Available']),
         specifications: JSON.stringify([
-          { name: '材质', value: 'BOPP/PP, PE/PA' },
-          { name: '厚度', value: '80-200微米' },
-          { name: '承重', value: '5-50kg' },
-          { name: '印刷', value: '支持多色印刷' },
-          { name: '认证', value: 'ISO9001, SGS' },
+          { name: 'Material', value: 'BOPP/PP, PE/PA' },
+          { name: 'Thickness', value: '80-200 microns' },
+          { name: 'Load Capacity', value: '5-50kg' },
+          { name: 'Printing', value: 'Supports multi-color printing' },
+          { name: 'Certifications', value: 'ISO9001, SGS' },
         ]),
       },
       {
-        name: '站立拉链袋',
+        name: 'Stand Up Zipper Pouch',
         slug: 'stand-up-zipper-pouch',
         categoryId: 2,
-        shortDescription: '自站立设计，带拉链密封，便于储存',
-        description: '站立拉链袋结合了站立袋的展示优势和拉链袋的便利性。产品可在货架上自立展示，消费者可轻松打开和重新密封，延长内容物保质期。',
-        features: JSON.stringify(['自立展示', '可重复密封', '优异阻隔性', '增强品牌形象', '环保材料可选']),
+        shortDescription: 'Self-standing design with zipper seal for easy storage',
+        description: 'Stand up zipper pouches combine the display advantages of stand-up pouches with the convenience of zipper pouches. Products can stand independently on shelves, and consumers can easily open and reseal them, extending the shelf life of contents.',
+        features: JSON.stringify(['Self-standing Display', 'Resealable', 'Excellent Barrier Properties', 'Enhanced Brand Image', 'Eco-friendly Materials Available']),
         specifications: JSON.stringify([
-          { name: '材质', value: 'PET/AL/PE, NY/AL/PE' },
-          { name: '容量', value: '50g-5kg' },
-          { name: '拉链类型', value: '易撕拉链/普通拉链' },
-          { name: '袋型', value: '平底/圆底' },
-          { name: '认证', value: 'FDA, QS, ISO14001' },
+          { name: 'Material', value: 'PET/AL/PE, NY/AL/PE' },
+          { name: 'Capacity', value: '50g-5kg' },
+          { name: 'Zipper Type', value: 'Easy-tear Zipper/Standard Zipper' },
+          { name: 'Pouch Type', value: 'Flat Bottom/Round Bottom' },
+          { name: 'Certifications', value: 'FDA, QS, ISO14001' },
         ]),
       },
       {
-        name: '高透明收缩膜',
+        name: 'High Clarity Shrink Film',
         slug: 'high-clarity-shrink-film',
         categoryId: 4,
-        shortDescription: '高透明度收缩膜，完美展示产品',
-        description: '高透明收缩膜采用优质POF/PVC材料，具有优异的收缩率和透明度。适用于食品、饮料、日用品等产品的包装，提供出色的产品展示效果和保护性能。',
-        features: JSON.stringify(['高透明度', '快速收缩', '强韧耐用', '环保无毒', '适用于高速包装机']),
+        shortDescription: 'High clarity shrink film for perfect product display',
+        description: 'High clarity shrink film uses premium POF/PVC materials with excellent shrinkage rate and transparency. Suitable for packaging food, beverages, daily necessities, and other products, providing outstanding product display effects and protection performance.',
+        features: JSON.stringify(['High Transparency', 'Fast Shrinkage', 'Strong and Durable', 'Eco-friendly and Non-toxic', 'Suitable for High-speed Packaging Machines']),
         specifications: JSON.stringify([
-          { name: '材质', value: 'POF, PVC, PE' },
-          { name: '厚度', value: '12-30微米' },
-          { name: '收缩率', value: '40-70%' },
-          { name: '宽度', value: '200-800mm' },
-          { name: '认证', value: 'FDA, SGS, ROHS' },
+          { name: 'Material', value: 'POF, PVC, PE' },
+          { name: 'Thickness', value: '12-30 microns' },
+          { name: 'Shrinkage Rate', value: '40-70%' },
+          { name: 'Width', value: '200-800mm' },
+          { name: 'Certifications', value: 'FDA, SGS, ROHS' },
         ]),
       },
       {
-        name: '真空保鲜袋',
+        name: 'Vacuum Freshness Pouch',
         slug: 'vacuum-freshness-pouch',
         categoryId: 5,
-        shortDescription: '专业真空包装解决方案，延长产品保质期',
-        description: '真空保鲜袋专为需要长期保存的产品设计，有效阻隔氧气和水分，延长产品保质期3-5倍。适用于肉类、海鲜、奶酪、坚果等食品的真空包装。',
-        features: JSON.stringify(['优异阻氧性能', '超强密封', '防穿刺', '耐低温', '可定制印刷']),
+        shortDescription: 'Professional vacuum packaging solution to extend product shelf life',
+        description: 'Vacuum freshness pouches are designed for products requiring long-term storage, effectively blocking oxygen and moisture, extending product shelf life by 3-5 times. Suitable for vacuum packaging of meat, seafood, cheese, nuts, and other foods.',
+        features: JSON.stringify(['Excellent Oxygen Barrier', 'Superior Sealing', 'Puncture Resistant', 'Low Temperature Resistant', 'Customizable Printing']),
         specifications: JSON.stringify([
-          { name: '材质', value: 'PA/PE, PET/AL/PA/PE' },
-          { name: '厚度', value: '80-180微米' },
-          { name: '阻氧率', value: '<1 cc/m²/day' },
-          { name: '耐温', value: '-40°C至121°C' },
-          { name: '认证', value: 'FDA, QS, HACCP' },
+          { name: 'Material', value: 'PA/PE, PET/AL/PA/PE' },
+          { name: 'Thickness', value: '80-180 microns' },
+          { name: 'Oxygen Barrier Rate', value: '<1 cc/m²/day' },
+          { name: 'Temperature Resistance', value: '-40°C to 121°C' },
+          { name: 'Certifications', value: 'FDA, QS, HACCP' },
         ]),
       },
       {
-        name: '液体自立袋',
+        name: 'Liquid Spouted Pouch',
         slug: 'liquid-spouted-pouch',
         categoryId: 6,
-        shortDescription: '带嘴袋设计，适合液体产品包装',
-        description: '液体自立袋专为液体产品设计的创新包装方案。配有螺旋嘴或吸嘴，方便倒出和储存。适用于果汁、饮料、调味品、洗涤剂等液体产品。',
-        features: JSON.stringify(['自立设计', '防漏嘴设计', '易倒出', '可重复使用', '便携轻便']),
+        shortDescription: 'Spouted pouch design suitable for liquid product packaging',
+        description: 'Liquid spouted pouches are innovative packaging solutions designed specifically for liquid products. Equipped with screw spouts or straw spouts for easy pouring and storage. Suitable for juices, beverages, seasonings, detergents, and other liquid products.',
+        features: JSON.stringify(['Self-standing Design', 'Leak-proof Spout Design', 'Easy to Pour', 'Reusable', 'Portable and Lightweight']),
         specifications: JSON.stringify([
-          { name: '材质', value: 'PET/NY/PE, PET/AL/NY/PE' },
-          { name: '容量', value: '100ml-5L' },
-          { name: '嘴径', value: '8.5mm-30mm' },
-          { name: '嘴类型', value: '螺旋嘴/吸嘴' },
-          { name: '认证', value: 'FDA, QS, BRC' },
+          { name: 'Material', value: 'PET/NY/PE, PET/AL/NY/PE' },
+          { name: 'Capacity', value: '100ml-5L' },
+          { name: 'Spout Diameter', value: '8.5mm-30mm' },
+          { name: 'Spout Type', value: 'Screw Spout/Straw Spout' },
+          { name: 'Certifications', value: 'FDA, QS, BRC' },
         ]),
       },
     ];
@@ -344,32 +344,32 @@ function initializeDatabase(): void {
     });
   }
 
-  // 初始化轮播图
+  // Initialize banners
   if (db.banners.length === 0) {
     const defaultBanners = [
       {
-        title: '专业塑料包装解决方案',
-        subtitle: '品质包装，值得信赖',
-        description: '20年行业经验，为您的产品提供最佳包装方案',
+        title: 'Professional Plastic Packaging Solutions',
+        subtitle: 'Quality Packaging, Trustworthy',
+        description: '20 years of industry experience, providing the best packaging solutions for your products',
         image: '/images/banner-placeholder.svg',
         link: '/products',
-        buttonText: '查看产品',
+        buttonText: 'View Products',
       },
       {
-        title: '环保可降解材料',
-        subtitle: '可持续发展',
-        description: '我们致力于研发环保包装材料，减少环境影响',
+        title: 'Eco-friendly Biodegradable Materials',
+        subtitle: 'Sustainable Development',
+        description: 'We are committed to developing eco-friendly packaging materials to reduce environmental impact',
         image: '/images/banner-placeholder.svg',
         link: '/products/lay-flat-pouches',
-        buttonText: '了解更多',
+        buttonText: 'Learn More',
       },
       {
-        title: '定制化服务',
-        subtitle: '您的需求，我们的专业',
-        description: '提供从设计到生产的全方位定制服务',
+        title: 'Customized Services',
+        subtitle: 'Your Needs, Our Expertise',
+        description: 'Providing comprehensive customization services from design to production',
         image: '/images/banner-placeholder.svg',
         link: '/contact',
-        buttonText: '联系我们',
+        buttonText: 'Contact Us',
       },
     ];
 
@@ -400,63 +400,63 @@ function ensureContentExists(): void {
   if (!db) return;
 
   const defaultContent = [
-    // 首页内容
-    { page: 'home', section: 'header', key: 'logo', value: '塑袋包装', image: '/images/logo-placeholder.svg' },
+    // Home page content
+    { page: 'home', section: 'header', key: 'logo', value: 'Plastic Packaging', image: '/images/logo-placeholder.svg' },
     { page: 'home', section: 'header', key: 'phone', value: '400-888-8888' },
     { page: 'home', section: 'header', key: 'email', value: 'info@packaging.com' },
-    { page: 'home', section: 'about', key: 'title', value: '关于我们' },
-    { page: 'home', section: 'about', key: 'description', value: '我们是专业的塑料包装解决方案提供商，拥有20年行业经验，为全球客户提供高品质的包装产品。我们致力于创新和可持续发展，为您的产品提供最佳包装方案。' },
+    { page: 'home', section: 'about', key: 'title', value: 'About Us' },
+    { page: 'home', section: 'about', key: 'description', value: 'We are a professional plastic packaging solutions provider with 20 years of industry experience, providing high-quality packaging products to global customers. We are committed to innovation and sustainable development, providing the best packaging solutions for your products.' },
     { page: 'home', section: 'about', key: 'image', value: '/images/about-placeholder.svg' },
-    { page: 'home', section: 'features', key: 'title', value: '为什么选择我们' },
-    { page: 'home', section: 'features', key: 'feature1_title', value: '品质保证' },
-    { page: 'home', section: 'features', key: 'feature1_desc', value: '所有产品均通过ISO9001质量认证，确保每一件产品都符合最高标准' },
-    { page: 'home', section: 'features', key: 'feature2_title', value: '定制服务' },
-    { page: 'home', section: 'features', key: 'feature2_desc', value: '提供全方位定制服务，从设计到生产，满足您的个性化需求' },
-    { page: 'home', section: 'features', key: 'feature3_title', value: '快速交付' },
-    { page: 'home', section: 'features', key: 'feature3_desc', value: '高效的生产流程，确保订单按时交付，支持紧急订单处理' },
-    { page: 'home', section: 'features', key: 'feature4_title', value: '环保材料' },
-    { page: 'home', section: 'features', key: 'feature4_desc', value: '采用环保可降解材料，减少对环境的影响，践行可持续发展' },
-    { page: 'home', section: 'cta', key: 'title', value: '开始您的包装项目' },
-    { page: 'home', section: 'cta', key: 'description', value: '联系我们获取免费样品和报价，我们的专业团队将为您提供最佳解决方案' },
-    { page: 'home', section: 'cta', key: 'button_text', value: '获取报价' },
-    // 页脚内容
-    { page: 'footer', section: 'company', key: 'name', value: '塑袋包装科技有限公司' },
-    { page: 'footer', section: 'company', key: 'address', value: '中国上海市浦东新区包装产业园88号' },
+    { page: 'home', section: 'features', key: 'title', value: 'Why Choose Us' },
+    { page: 'home', section: 'features', key: 'feature1_title', value: 'Quality Assurance' },
+    { page: 'home', section: 'features', key: 'feature1_desc', value: 'All products are ISO9001 quality certified, ensuring every product meets the highest standards' },
+    { page: 'home', section: 'features', key: 'feature2_title', value: 'Customized Services' },
+    { page: 'home', section: 'features', key: 'feature2_desc', value: 'Providing comprehensive customization services from design to production to meet your personalized needs' },
+    { page: 'home', section: 'features', key: 'feature3_title', value: 'Fast Delivery' },
+    { page: 'home', section: 'features', key: 'feature3_desc', value: 'Efficient production processes ensure on-time delivery, with support for urgent order processing' },
+    { page: 'home', section: 'features', key: 'feature4_title', value: 'Eco-friendly Materials' },
+    { page: 'home', section: 'features', key: 'feature4_desc', value: 'Using eco-friendly biodegradable materials to reduce environmental impact and practice sustainable development' },
+    { page: 'home', section: 'cta', key: 'title', value: 'Start Your Packaging Project' },
+    { page: 'home', section: 'cta', key: 'description', value: 'Contact us for free samples and quotes, our professional team will provide you with the best solutions' },
+    { page: 'home', section: 'cta', key: 'button_text', value: 'Get Quote' },
+    // Footer content
+    { page: 'footer', section: 'company', key: 'name', value: 'Plastic Packaging Technology Co., Ltd.' },
+    { page: 'footer', section: 'company', key: 'address', value: 'No. 88, Packaging Industrial Park, Pudong New Area, Shanghai, China' },
     { page: 'footer', section: 'company', key: 'phone', value: '400-888-8888' },
     { page: 'footer', section: 'company', key: 'email', value: 'info@packaging.com' },
     { page: 'footer', section: 'social', key: 'linkedin', value: 'linkedin.com/company/yourcompany' },
     { page: 'footer', section: 'social', key: 'facebook', value: 'facebook.com/yourpage' },
     { page: 'footer', section: 'social', key: 'instagram', value: '@yourhandle' },
-    { page: 'footer', section: 'copyright', key: 'text', value: '© 2024 塑袋包装科技有限公司 版权所有' },
-    // 行业页面内容
-    { page: 'industries', section: 'hero', key: 'title', value: '行业应用' },
-    { page: 'industries', section: 'hero', key: 'subtitle', value: '为各行各业提供专业包装解决方案' },
-    { page: 'industries', section: 'intro', key: 'title', value: '专业行业解决方案' },
-    { page: 'industries', section: 'intro', key: 'description', value: '我们拥有丰富的行业经验，深入了解不同行业的包装需求。无论是食品保鲜、医药安全还是工业防护，我们都能为您提供最适合的包装方案。' },
-    { page: 'industries', section: 'cta', key: 'title', value: '开始您的项目' },
-    { page: 'industries', section: 'cta', key: 'description', value: '联系我们，获取针对您行业的专业包装方案' },
-    // 行业页面 - 服务行业部分
-    { page: 'industries', section: 'service_intro', key: 'title', value: '服务行业' },
-    { page: 'industries', section: 'service_intro', key: 'subtitle', value: '我们服务的行业领域' },
-    // 行业页面 - 为什么选择我们部分
-    { page: 'industries', section: 'why_choose', key: 'title', value: '为什么选择我们' },
-    { page: 'industries', section: 'why_choose', key: 'feature1_title', value: '行业认证' },
-    { page: 'industries', section: 'why_choose', key: 'feature1_desc', value: '通过 FDA、ISO 等多项国际认证' },
-    { page: 'industries', section: 'why_choose', key: 'feature2_title', value: '定制研发' },
-    { page: 'industries', section: 'why_choose', key: 'feature2_desc', value: '针对行业特点定制包装方案' },
-    { page: 'industries', section: 'why_choose', key: 'feature3_title', value: '快速响应' },
-    { page: 'industries', section: 'why_choose', key: 'feature3_desc', value: '24 小时内响应客户需求' },
-    { page: 'industries', section: 'why_choose', key: 'feature4_title', value: '全球服务' },
-    { page: 'industries', section: 'why_choose', key: 'feature4_desc', value: '产品远销全球 50 多个国家' },
-    // 环保页面内容
-    { page: 'sustainability', section: 'hero', key: 'title', value: '环保承诺' },
-    { page: 'sustainability', section: 'hero', key: 'subtitle', value: '软包装与环境可持续发展' },
-    { page: 'sustainability', section: 'intro', key: 'title', value: '我们的环保理念' },
-    { page: 'sustainability', section: 'intro', key: 'description', value: '作为包装行业的一员，我们深知环境保护的重要性。我们致力于研发和推广环保型包装材料，通过技术创新减少包装对环境的影响，为客户和地球创造可持续的未来。' },
-    { page: 'sustainability', section: 'intro', key: 'description2', value: '我们相信，优质的包装不仅要保护产品，更要保护我们的地球。从材料选择到生产工艺，每一个环节我们都力求做到环保、节能、可持续。' },
+    { page: 'footer', section: 'copyright', key: 'text', value: '© 2024 Plastic Packaging Technology Co., Ltd. All Rights Reserved' },
+    // Industry page content
+    { page: 'industries', section: 'hero', key: 'title', value: 'Industry Applications' },
+    { page: 'industries', section: 'hero', key: 'subtitle', value: 'Providing professional packaging solutions for various industries' },
+    { page: 'industries', section: 'intro', key: 'title', value: 'Professional Industry Solutions' },
+    { page: 'industries', section: 'intro', key: 'description', value: 'We have extensive industry experience and deeply understand the packaging needs of different industries. Whether it is food preservation, pharmaceutical safety, or industrial protection, we can provide you with the most suitable packaging solutions.' },
+    { page: 'industries', section: 'cta', key: 'title', value: 'Start Your Project' },
+    { page: 'industries', section: 'cta', key: 'description', value: 'Contact us to get professional packaging solutions tailored to your industry' },
+    // Industry page - Service industries section
+    { page: 'industries', section: 'service_intro', key: 'title', value: 'Industries We Serve' },
+    { page: 'industries', section: 'service_intro', key: 'subtitle', value: 'Our service areas' },
+    // Industry page - Why choose us section
+    { page: 'industries', section: 'why_choose', key: 'title', value: 'Why Choose Us' },
+    { page: 'industries', section: 'why_choose', key: 'feature1_title', value: 'Industry Certifications' },
+    { page: 'industries', section: 'why_choose', key: 'feature1_desc', value: 'Passed multiple international certifications including FDA and ISO' },
+    { page: 'industries', section: 'why_choose', key: 'feature2_title', value: 'Custom R&D' },
+    { page: 'industries', section: 'why_choose', key: 'feature2_desc', value: 'Custom packaging solutions tailored to industry characteristics' },
+    { page: 'industries', section: 'why_choose', key: 'feature3_title', value: 'Fast Response' },
+    { page: 'industries', section: 'why_choose', key: 'feature3_desc', value: 'Respond to customer needs within 24 hours' },
+    { page: 'industries', section: 'why_choose', key: 'feature4_title', value: 'Global Service' },
+    { page: 'industries', section: 'why_choose', key: 'feature4_desc', value: 'Products exported to more than 50 countries worldwide' },
+    // Sustainability page content
+    { page: 'sustainability', section: 'hero', key: 'title', value: 'Environmental Commitment' },
+    { page: 'sustainability', section: 'hero', key: 'subtitle', value: 'Flexible Packaging and Environmental Sustainable Development' },
+    { page: 'sustainability', section: 'intro', key: 'title', value: 'Our Environmental Philosophy' },
+    { page: 'sustainability', section: 'intro', key: 'description', value: 'As a member of the packaging industry, we deeply understand the importance of environmental protection. We are committed to developing and promoting eco-friendly packaging materials, reducing the environmental impact of packaging through technological innovation, and creating a sustainable future for customers and the planet.' },
+    { page: 'sustainability', section: 'intro', key: 'description2', value: 'We believe that quality packaging should not only protect products but also protect our planet. From material selection to production processes, we strive to be eco-friendly, energy-efficient, and sustainable in every step.' },
     { page: 'sustainability', section: 'intro', key: 'image', value: '/images/about-placeholder.svg' },
-    { page: 'sustainability', section: 'cta', key: 'title', value: '选择环保包装，共创美好未来' },
-    { page: 'sustainability', section: 'cta', key: 'description', value: '联系我们，了解更多环保包装解决方案' },
+    { page: 'sustainability', section: 'cta', key: 'title', value: 'Choose Eco-friendly Packaging, Create a Better Future Together' },
+    { page: 'sustainability', section: 'cta', key: 'description', value: 'Contact us to learn more about eco-friendly packaging solutions' },
   ];
 
   // 检查并添加缺失的内容

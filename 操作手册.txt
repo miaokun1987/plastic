@@ -58,3 +58,6 @@ $env:PORT=3001; npm run start
   - 行业图标系列 (6 个): 400 × 300 px
   - 占位图: 各种尺寸 (200×60 到 1920×600)
   - 主横幅: banner-main.svg 是 600 × 400 px
+
+=====部署到netlify之后的url=====
+https://plastic-rubby.netlify.app/

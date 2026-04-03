@@ -17,19 +17,19 @@ interface SidebarProps {
 
 function AdminSidebar({ user, activeTab, setActiveTab, onLogout }: SidebarProps) {
   const menuItems = [
-    { id: 'dashboard', label: '仪表盘', icon: '📊' },
-    { id: 'products', label: '产品管理', icon: '📦' },
-    { id: 'categories', label: '分类管理', icon: '📁' },
-    { id: 'industries', label: '行业管理', icon: '🏭' },
-    { id: 'banners', label: '轮播图管理', icon: '🖼️' },
-    { id: 'content', label: '网站内容', icon: '📝' },
+    { id: 'dashboard', label: 'Dashboard', icon: '📊' },
+    { id: 'products', label: 'Products', icon: '📦' },
+    { id: 'categories', label: 'Categories', icon: '📁' },
+    { id: 'industries', label: 'Industries', icon: '🏭' },
+    { id: 'banners', label: 'Banners', icon: '🖼️' },
+    { id: 'content', label: 'Website Content', icon: '📝' },
   ];
 
   return (
     <div className="admin-sidebar">
       <div className="mb-8">
-        <h1 className="text-xl font-bold">塑袋包装</h1>
-        <p className="text-gray-400 text-sm">后台管理系统</p>
+        <h1 className="text-xl font-bold">Plastic Packaging</h1>
+        <p className="text-gray-400 text-sm">Admin Dashboard</p>
       </div>
 
       <nav className="space-y-2">
@@ -47,17 +47,17 @@ function AdminSidebar({ user, activeTab, setActiveTab, onLogout }: SidebarProps)
 
       <div className="absolute bottom-6 left-6 right-6">
         <div className="border-t border-gray-700 pt-4 mb-4">
-          <p className="text-gray-400 text-sm">当前用户: {user.username}</p>
+          <p className="text-gray-400 text-sm">Current User: {user.username}</p>
         </div>
         <div className="flex flex-col gap-2">
           <Link href="/" className="text-gray-400 hover:text-white text-sm">
-            查看前台
+            View Website
           </Link>
           <button
             onClick={onLogout}
             className="text-left text-red-400 hover:text-red-300 text-sm"
           >
-            退出登录
+            Logout
           </button>
         </div>
       </div>
@@ -109,7 +109,7 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-gray-600">加载中...</div>
+        <div className="text-gray-600">Loading...</div>
       </div>
     );
   }
@@ -121,7 +121,7 @@ export default function AdminDashboard() {
   return (
     <>
       <Head>
-        <title>后台管理 - 塑袋包装</title>
+        <title>Admin Dashboard - Plastic Packaging</title>
       </Head>
       <div className="min-h-screen bg-gray-100">
         <AdminSidebar
@@ -171,14 +171,14 @@ function DashboardContent() {
   }, []);
 
   const statCards = [
-    { label: '产品总数', value: stats.products, color: 'bg-blue-500' },
-    { label: '分类数量', value: stats.categories, color: 'bg-green-500' },
-    { label: '轮播图', value: stats.banners, color: 'bg-orange-500' },
+    { label: 'Total Products', value: stats.products, color: 'bg-blue-500' },
+    { label: 'Total Categories', value: stats.categories, color: 'bg-green-500' },
+    { label: 'Banners', value: stats.banners, color: 'bg-orange-500' },
   ];
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">仪表盘</h2>
+      <h2 className="text-2xl font-bold mb-6">Dashboard</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {statCards.map((stat) => (
           <div key={stat.label} className="bg-white rounded-xl p-6 shadow">
@@ -192,15 +192,15 @@ function DashboardContent() {
       </div>
 
       <div className="bg-white rounded-xl p-6 shadow">
-        <h3 className="text-lg font-semibold mb-4">图片规格说明</h3>
+        <h3 className="text-lg font-semibold mb-4">Image Specifications</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-4 py-3 text-left">图片类型</th>
-                <th className="px-4 py-3 text-left">建议尺寸</th>
-                <th className="px-4 py-3 text-left">格式</th>
-                <th className="px-4 py-3 text-left">用途</th>
+                <th className="px-4 py-3 text-left">Image Type</th>
+                <th className="px-4 py-3 text-left">Recommended Size</th>
+                <th className="px-4 py-3 text-left">Format</th>
+                <th className="px-4 py-3 text-left">Usage</th>
               </tr>
             </thead>
             <tbody className="divide-y">
@@ -208,31 +208,31 @@ function DashboardContent() {
                 <td className="px-4 py-3">Logo</td>
                 <td className="px-4 py-3">200 x 60 px</td>
                 <td className="px-4 py-3">PNG/JPEG</td>
-                <td className="px-4 py-3">网站头部Logo</td>
+                <td className="px-4 py-3">Website Header Logo</td>
               </tr>
               <tr>
-                <td className="px-4 py-3">Banner/轮播图</td>
+                <td className="px-4 py-3">Banner/Carousel</td>
                 <td className="px-4 py-3">1920 x 600 px</td>
                 <td className="px-4 py-3">JPEG</td>
-                <td className="px-4 py-3">首页轮播图</td>
+                <td className="px-4 py-3">Homepage Carousel</td>
               </tr>
               <tr>
-                <td className="px-4 py-3">产品主图</td>
+                <td className="px-4 py-3">Product Main Image</td>
                 <td className="px-4 py-3">800 x 800 px</td>
                 <td className="px-4 py-3">JPEG</td>
-                <td className="px-4 py-3">产品列表和详情页</td>
+                <td className="px-4 py-3">Product List and Detail Pages</td>
               </tr>
               <tr>
-                <td className="px-4 py-3">分类图片</td>
+                <td className="px-4 py-3">Category Image</td>
                 <td className="px-4 py-3">400 x 300 px</td>
                 <td className="px-4 py-3">JPEG</td>
-                <td className="px-4 py-3">分类展示图</td>
+                <td className="px-4 py-3">Category Display Image</td>
               </tr>
               <tr>
-                <td className="px-4 py-3">关于我们图片</td>
+                <td className="px-4 py-3">About Us Image</td>
                 <td className="px-4 py-3">600 x 400 px</td>
                 <td className="px-4 py-3">JPEG</td>
-                <td className="px-4 py-3">首页关于我们区块</td>
+                <td className="px-4 py-3">Homepage About Us Section</td>
               </tr>
             </tbody>
           </table>
@@ -315,7 +315,7 @@ function ProductsManager() {
           });
 
       if (res.ok) {
-        setSaveMessage(editingProduct ? '产品更新成功！' : '产品创建成功！');
+        setSaveMessage(editingProduct ? 'Product updated successfully!' : 'Product created successfully!');
         setTimeout(() => setSaveMessage(null), 3000);
         setShowForm(false);
         setEditingProduct(null);
@@ -323,17 +323,20 @@ function ProductsManager() {
         fetchProducts();
       } else {
         const errorData = await res.json();
-        setSaveMessage(`保存失败: ${errorData.error || '未知错误'}`);
+        setSaveMessage(`Save failed: ${errorData.error || 'Unknown error'}`);
         setTimeout(() => setSaveMessage(null), 3000);
       }
     } catch (error) {
       console.error('Failed to save product:', error);
-      setSaveMessage('保存失败，请检查网络连接');
+      setSaveMessage('Save failed, please check network connection');
       setTimeout(() => setSaveMessage(null), 3000);
     }
   };
 
-  const handleEdit = (product: any) => {
+  const handleEdit = async (slug: string) => {
+    const product = products.find((p) => p.slug === slug);
+    if (!product) return;
+
     setEditingProduct(product);
     setFormData({
       name: product.name,
@@ -356,7 +359,7 @@ function ProductsManager() {
   };
 
   const handleDelete = async (slug: string) => {
-    if (!confirm('确定要删除这个产品吗？')) return;
+    if (!confirm('Are you sure you want to delete this product?')) return;
 
     const token = localStorage.getItem('token');
     try {
@@ -431,7 +434,7 @@ function ProductsManager() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">产品管理</h2>
+        <h2 className="text-2xl font-bold">Product Management</h2>
         <button
           onClick={() => {
             resetForm();
@@ -440,20 +443,20 @@ function ProductsManager() {
           }}
           className="btn-primary"
         >
-          + 添加产品
+          + Add Product
         </button>
       </div>
 
       {showForm && (
         <div className="bg-white rounded-xl p-6 shadow mb-6">
           <h3 className="text-lg font-semibold mb-4">
-            {editingProduct ? '编辑产品' : '添加产品'}
+            {editingProduct ? 'Edit Product' : 'Add Product'}
           </h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  产品名称 *
+                  Product Name *
                 </label>
                 <input
                   type="text"
@@ -475,7 +478,7 @@ function ProductsManager() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  URL别名 *
+                  URL Alias *
                 </label>
                 <input
                   type="text"
@@ -490,14 +493,14 @@ function ProductsManager() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  所属分类
+                  Category
                 </label>
                 <select
                   value={formData.category_id}
                   onChange={(e) => setFormData({ ...formData, category_id: e.target.value })}
                   className="input-field"
                 >
-                  <option value="">请选择分类</option>
+                  <option value="">Please select category</option>
                   {categories.map((cat) => (
                     <option key={cat.id} value={cat.id}>
                       {cat.name}
@@ -507,7 +510,7 @@ function ProductsManager() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  排序
+                  Sort Order
                 </label>
                 <input
                   type="number"
@@ -520,7 +523,7 @@ function ProductsManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                简短描述
+                Short Description
               </label>
               <input
                 type="text"
@@ -532,7 +535,7 @@ function ProductsManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                详细描述
+                Detailed Description
               </label>
               <textarea
                 value={formData.description}
@@ -545,33 +548,33 @@ function ProductsManager() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  特点 (JSON数组格式)
+                  Features (JSON array format)
                 </label>
                 <textarea
                   value={formData.features}
                   onChange={(e) => setFormData({ ...formData, features: e.target.value })}
                   rows={3}
                   className="input-field font-mono text-sm"
-                  placeholder='["特点1", "特点2"]'
+                  placeholder='["Feature 1", "Feature 2"]'
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  规格 (JSON数组格式)
+                  Specifications (JSON array format)
                 </label>
                 <textarea
                   value={formData.specifications}
                   onChange={(e) => setFormData({ ...formData, specifications: e.target.value })}
                   rows={3}
                   className="input-field font-mono text-sm"
-                  placeholder='[{"name":"材质","value":"PET/PE"}]'
+                  placeholder='[{"name":"Material","value":"PET/PE"}]'
                 />
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                产品主图 (建议: 800 x 800 px, JPEG)
+                Product Main Image (Recommended: 800 x 800 px, JPEG)
               </label>
               <div className="flex items-center gap-4">
                 <input
@@ -583,7 +586,7 @@ function ProductsManager() {
                 {formData.main_image && (
                   <img
                     src={formData.main_image}
-                    alt="预览"
+                    alt="Preview"
                     className="w-20 h-20 object-cover rounded"
                   />
                 )}
@@ -592,7 +595,7 @@ function ProductsManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                产品示意图图片 (建议: 800 x 500 px, JPEG)
+                Product Diagram Image (Recommended: 800 x 500 px, JPEG)
               </label>
               <div className="flex items-center gap-4">
                 <input
@@ -604,7 +607,7 @@ function ProductsManager() {
                 {formData.diagram_image && (
                   <img
                     src={formData.diagram_image}
-                    alt="预览"
+                    alt="Preview"
                     className="w-20 h-20 object-cover rounded"
                   />
                 )}
@@ -613,40 +616,40 @@ function ProductsManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                产品示意图描述
+                Product Diagram Description
               </label>
               <textarea
                 value={formData.diagram_description}
                 onChange={(e) => setFormData({ ...formData, diagram_description: e.target.value })}
                 rows={3}
                 className="input-field"
-                placeholder="输入产品示意图的文字说明..."
+                placeholder="Enter description for product diagram..."
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  SEO标题
+                  SEO Title
                 </label>
                 <input
                   type="text"
                   value={formData.meta_title}
                   onChange={(e) => setFormData({ ...formData, meta_title: e.target.value })}
                   className="input-field"
-                  placeholder="用于搜索引擎优化"
+                  placeholder="For search engine optimization"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  SEO描述
+                  SEO Description
                 </label>
                 <input
                   type="text"
                   value={formData.meta_description}
                   onChange={(e) => setFormData({ ...formData, meta_description: e.target.value })}
                   className="input-field"
-                  placeholder="用于搜索引擎优化"
+                  placeholder="For search engine optimization"
                 />
               </div>
             </div>
@@ -659,13 +662,13 @@ function ProductsManager() {
                 onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
               />
               <label htmlFor="is_featured" className="text-sm text-gray-700">
-                设为推荐产品
+                Mark as Featured Product
               </label>
             </div>
 
             <div className="flex gap-4">
               <button type="submit" className="btn-primary">
-                {editingProduct ? '更新' : '创建'}
+                {editingProduct ? 'Update' : 'Create'}
               </button>
               <button
                 type="button"
@@ -675,11 +678,11 @@ function ProductsManager() {
                 }}
                 className="btn-outline"
               >
-                取消
+                Cancel
               </button>
             </div>
             {saveMessage && (
-              <div className={`mt-4 p-3 rounded ${saveMessage.includes('成功') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+              <div className={`mt-4 p-3 rounded ${saveMessage.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                 {saveMessage}
               </div>
             )}
@@ -691,11 +694,11 @@ function ProductsManager() {
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-4 py-3 text-left">图片</th>
-              <th className="px-4 py-3 text-left">名称</th>
-              <th className="px-4 py-3 text-left">分类</th>
-              <th className="px-4 py-3 text-left">排序</th>
-              <th className="px-4 py-3 text-left">操作</th>
+              <th className="px-4 py-3 text-left">Image</th>
+              <th className="px-4 py-3 text-left">Name</th>
+              <th className="px-4 py-3 text-left">Category</th>
+              <th className="px-4 py-3 text-left">Sort Order</th>
+              <th className="px-4 py-3 text-left">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y">
@@ -710,7 +713,7 @@ function ProductsManager() {
                     />
                   ) : (
                     <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400">
-                      无图
+                      No Image
                     </div>
                   )}
                 </td>
@@ -726,13 +729,13 @@ function ProductsManager() {
                       onClick={() => handleEdit(product)}
                       className="text-primary-600 hover:text-primary-800"
                     >
-                      编辑
+                      Edit
                     </button>
                     <button
                       onClick={() => handleDelete(product.slug)}
                       className="text-red-600 hover:text-red-800"
                     >
-                      删除
+                      Delete
                     </button>
                   </div>
                 </td>
@@ -796,7 +799,7 @@ function CategoriesManager() {
           });
 
       if (res.ok) {
-        setSaveMessage(editingCategory ? '分类更新成功！' : '分类创建成功！');
+        setSaveMessage(editingCategory ? 'Category updated successfully!' : 'Category created successfully!');
         setTimeout(() => setSaveMessage(null), 3000);
         setShowForm(false);
         setEditingCategory(null);
@@ -804,12 +807,12 @@ function CategoriesManager() {
         fetchCategories();
       } else {
         const errorData = await res.json();
-        setSaveMessage(`保存失败: ${errorData.error || '未知错误'}`);
+        setSaveMessage(`Save failed: ${errorData.error || 'Unknown error'}`);
         setTimeout(() => setSaveMessage(null), 3000);
       }
     } catch (error) {
       console.error('Failed to save category:', error);
-      setSaveMessage('保存失败，请检查网络连接');
+      setSaveMessage('Save failed, please check network connection');
       setTimeout(() => setSaveMessage(null), 3000);
     }
   };
@@ -827,7 +830,7 @@ function CategoriesManager() {
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm('确定要删除这个分类吗？删除分类不会删除该分类下的产品。')) return;
+    if (!confirm('Are you sure you want to delete this category? Deleting a category will not delete the products under it.')) return;
 
     const token = localStorage.getItem('token');
     try {
@@ -873,7 +876,7 @@ function CategoriesManager() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">分类管理</h2>
+        <h2 className="text-2xl font-bold">Category Management</h2>
         <button
           onClick={() => {
             resetForm();
@@ -882,20 +885,20 @@ function CategoriesManager() {
           }}
           className="btn-primary"
         >
-          + 添加分类
+          + Add Category
         </button>
       </div>
 
       {showForm && (
         <div className="bg-white rounded-xl p-6 shadow mb-6">
           <h3 className="text-lg font-semibold mb-4">
-            {editingCategory ? '编辑分类' : '添加分类'}
+            {editingCategory ? 'Edit Category' : 'Add Category'}
           </h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  分类名称 *
+                  Category Name *
                 </label>
                 <input
                   type="text"
@@ -917,7 +920,7 @@ function CategoriesManager() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  URL别名 *
+                  URL Alias *
                 </label>
                 <input
                   type="text"
@@ -931,7 +934,7 @@ function CategoriesManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                分类描述
+                Category Description
               </label>
               <textarea
                 value={formData.description}
@@ -943,7 +946,7 @@ function CategoriesManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                分类图片 (建议: 400 x 300 px, JPEG)
+                Category Image (Recommended: 400 x 300 px, JPEG)
               </label>
               <div className="flex items-center gap-4">
                 <input
@@ -953,14 +956,14 @@ function CategoriesManager() {
                   className="flex-1"
                 />
                 {formData.image && (
-                  <img src={formData.image} alt="预览" className="w-20 h-20 object-cover rounded" />
+                  <img src={formData.image} alt="Preview" className="w-20 h-20 object-cover rounded" />
                 )}
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                排序
+                Sort Order
               </label>
               <input
                 type="number"
@@ -972,7 +975,7 @@ function CategoriesManager() {
 
             <div className="flex gap-4">
               <button type="submit" className="btn-primary">
-                {editingCategory ? '更新' : '创建'}
+                {editingCategory ? 'Update' : 'Create'}
               </button>
               <button
                 type="button"
@@ -982,7 +985,7 @@ function CategoriesManager() {
                 }}
                 className="btn-outline"
               >
-                取消
+                Cancel
               </button>
             </div>
             {saveMessage && (
@@ -998,11 +1001,11 @@ function CategoriesManager() {
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-4 py-3 text-left">图片</th>
-              <th className="px-4 py-3 text-left">名称</th>
-              <th className="px-4 py-3 text-left">别名</th>
-              <th className="px-4 py-3 text-left">排序</th>
-              <th className="px-4 py-3 text-left">操作</th>
+              <th className="px-4 py-3 text-left">Image</th>
+              <th className="px-4 py-3 text-left">Name</th>
+              <th className="px-4 py-3 text-left">Alias</th>
+              <th className="px-4 py-3 text-left">Sort Order</th>
+              <th className="px-4 py-3 text-left">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y">
@@ -1013,7 +1016,7 @@ function CategoriesManager() {
                     <img src={category.image} alt={category.name} className="w-16 h-16 object-cover rounded" />
                   ) : (
                     <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400">
-                      无图
+                      No Image
                     </div>
                   )}
                 </td>
@@ -1026,13 +1029,13 @@ function CategoriesManager() {
                       onClick={() => handleEdit(category)}
                       className="text-primary-600 hover:text-primary-800"
                     >
-                      编辑
+                      Edit
                     </button>
                     <button
                       onClick={() => handleDelete(category.id)}
                       className="text-red-600 hover:text-red-800"
                     >
-                      删除
+                      Delete
                     </button>
                   </div>
                 </td>
@@ -1096,7 +1099,7 @@ function IndustriesManager() {
           });
 
       if (res.ok) {
-        setSaveMessage(editingIndustry ? '行业更新成功！' : '行业创建成功！');
+        setSaveMessage(editingIndustry ? 'Industry updated successfully!' : 'Industry created successfully!');
         setTimeout(() => setSaveMessage(null), 3000);
         setShowForm(false);
         setEditingIndustry(null);
@@ -1104,12 +1107,12 @@ function IndustriesManager() {
         fetchIndustries();
       } else {
         const errorData = await res.json();
-        setSaveMessage(`保存失败: ${errorData.error || '未知错误'}`);
+        setSaveMessage(`Save failed: ${errorData.error || 'Unknown error'}`);
         setTimeout(() => setSaveMessage(null), 3000);
       }
     } catch (error) {
       console.error('Failed to save industry:', error);
-      setSaveMessage('保存失败，请检查网络连接');
+      setSaveMessage('Save failed, please check network connection');
       setTimeout(() => setSaveMessage(null), 3000);
     }
   };
@@ -1127,7 +1130,7 @@ function IndustriesManager() {
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm('确定要删除这个行业吗？')) return;
+    if (!confirm('Are you sure you want to delete this industry?')) return;
 
     const token = localStorage.getItem('token');
     try {
@@ -1173,7 +1176,7 @@ function IndustriesManager() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">行业管理</h2>
+        <h2 className="text-2xl font-bold">Industry Management</h2>
         <button
           onClick={() => {
             resetForm();
@@ -1182,20 +1185,20 @@ function IndustriesManager() {
           }}
           className="btn-primary"
         >
-          + 添加行业
+          + Add Industry
         </button>
       </div>
 
       {showForm && (
         <div className="bg-white rounded-xl p-6 shadow mb-6">
           <h3 className="text-lg font-semibold mb-4">
-            {editingIndustry ? '编辑行业' : '添加行业'}
+            {editingIndustry ? 'Edit Industry' : 'Add Industry'}
           </h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  行业名称 *
+                  Industry Name *
                 </label>
                 <input
                   type="text"
@@ -1217,7 +1220,7 @@ function IndustriesManager() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  URL 别名 *
+                  URL Alias *
                 </label>
                 <input
                   type="text"
@@ -1231,7 +1234,7 @@ function IndustriesManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                行业描述
+                Industry Description
               </label>
               <textarea
                 value={formData.description}
@@ -1243,7 +1246,7 @@ function IndustriesManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                行业图片 (建议：400 x 300 px, JPEG/SVG)
+                Industry Image (Recommended: 400 x 300 px, JPEG/SVG)
               </label>
               <div className="flex items-center gap-4">
                 <input
@@ -1253,14 +1256,14 @@ function IndustriesManager() {
                   className="flex-1"
                 />
                 {formData.image && (
-                  <img src={formData.image} alt="预览" className="w-20 h-20 object-cover rounded" />
+                  <img src={formData.image} alt="Preview" className="w-20 h-20 object-cover rounded" />
                 )}
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                排序
+                Sort Order
               </label>
               <input
                 type="number"
@@ -1272,7 +1275,7 @@ function IndustriesManager() {
 
             <div className="flex gap-4">
               <button type="submit" className="btn-primary">
-                {editingIndustry ? '更新' : '创建'}
+                {editingIndustry ? 'Update' : 'Create'}
               </button>
               <button
                 type="button"
@@ -1282,7 +1285,7 @@ function IndustriesManager() {
                 }}
                 className="btn-outline"
               >
-                取消
+                Cancel
               </button>
             </div>
             {saveMessage && (
@@ -1298,11 +1301,11 @@ function IndustriesManager() {
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-4 py-3 text-left">图片</th>
-              <th className="px-4 py-3 text-left">名称</th>
-              <th className="px-4 py-3 text-left">别名</th>
-              <th className="px-4 py-3 text-left">排序</th>
-              <th className="px-4 py-3 text-left">操作</th>
+              <th className="px-4 py-3 text-left">Image</th>
+              <th className="px-4 py-3 text-left">Name</th>
+              <th className="px-4 py-3 text-left">Alias</th>
+              <th className="px-4 py-3 text-left">Sort Order</th>
+              <th className="px-4 py-3 text-left">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y">
@@ -1313,7 +1316,7 @@ function IndustriesManager() {
                     <img src={industry.image} alt={industry.name} className="w-16 h-16 object-cover rounded" />
                   ) : (
                     <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400">
-                      无图
+                      No Image
                     </div>
                   )}
                 </td>
@@ -1326,13 +1329,13 @@ function IndustriesManager() {
                       onClick={() => handleEdit(industry)}
                       className="text-primary-600 hover:text-primary-800"
                     >
-                      编辑
+                      Edit
                     </button>
                     <button
                       onClick={() => handleDelete(industry.id)}
                       className="text-red-600 hover:text-red-800"
                     >
-                      删除
+                      Delete
                     </button>
                   </div>
                 </td>
@@ -1399,7 +1402,7 @@ function BannersManager() {
           });
 
       if (res.ok) {
-        setSaveMessage(editingBanner ? '轮播图更新成功！' : '轮播图创建成功！');
+        setSaveMessage(editingBanner ? 'Banner updated successfully!' : 'Banner created successfully!');
         setTimeout(() => setSaveMessage(null), 3000);
         setShowForm(false);
         setEditingBanner(null);
@@ -1407,12 +1410,12 @@ function BannersManager() {
         fetchBanners();
       } else {
         const errorData = await res.json();
-        setSaveMessage(`保存失败: ${errorData.error || '未知错误'}`);
+        setSaveMessage(`Save failed: ${errorData.error || 'Unknown error'}`);
         setTimeout(() => setSaveMessage(null), 3000);
       }
     } catch (error) {
       console.error('Failed to save banner:', error);
-      setSaveMessage('保存失败，请检查网络连接');
+      setSaveMessage('Save failed, please check network connection');
       setTimeout(() => setSaveMessage(null), 3000);
     }
   };
@@ -1433,7 +1436,7 @@ function BannersManager() {
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm('确定要删除这个轮播图吗？')) return;
+    if (!confirm('Are you sure you want to delete this banner?')) return;
 
     const token = localStorage.getItem('token');
     try {
@@ -1482,7 +1485,7 @@ function BannersManager() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">轮播图管理</h2>
+        <h2 className="text-2xl font-bold">Banner Management</h2>
         <button
           onClick={() => {
             resetForm();
@@ -1491,19 +1494,19 @@ function BannersManager() {
           }}
           className="btn-primary"
         >
-          + 添加轮播图
+          + Add Banner
         </button>
       </div>
 
       {showForm && (
         <div className="bg-white rounded-xl p-6 shadow mb-6">
           <h3 className="text-lg font-semibold mb-4">
-            {editingBanner ? '编辑轮播图' : '添加轮播图'}
+            {editingBanner ? 'Edit Banner' : 'Add Banner'}
           </h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">标题</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
                 <input
                   type="text"
                   value={formData.title}
@@ -1512,7 +1515,7 @@ function BannersManager() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">副标题</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle</label>
                 <input
                   type="text"
                   value={formData.subtitle}
@@ -1523,7 +1526,7 @@ function BannersManager() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">描述</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -1534,7 +1537,7 @@ function BannersManager() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">链接</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Link</label>
                 <input
                   type="text"
                   value={formData.link}
@@ -1544,7 +1547,7 @@ function BannersManager() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">按钮文字</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Button Text</label>
                 <input
                   type="text"
                   value={formData.button_text}
@@ -1556,7 +1559,7 @@ function BannersManager() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                轮播图 (建议: 1920 x 600 px, JPEG)
+                Banner Image (Recommended: 1920 x 600 px, JPEG)
               </label>
               <div className="flex items-center gap-4">
                 <input
@@ -1566,14 +1569,14 @@ function BannersManager() {
                   className="flex-1"
                 />
                 {formData.image && (
-                  <img src={formData.image} alt="预览" className="h-20 object-cover rounded" />
+                  <img src={formData.image} alt="Preview" className="h-20 object-cover rounded" />
                 )}
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">排序</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
                 <input
                   type="number"
                   value={formData.sort_order}
@@ -1589,14 +1592,14 @@ function BannersManager() {
                   onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
                 />
                 <label htmlFor="is_active" className="ml-2 text-sm text-gray-700">
-                  启用
+                  Enable
                 </label>
               </div>
             </div>
 
             <div className="flex gap-4">
               <button type="submit" className="btn-primary">
-                {editingBanner ? '更新' : '创建'}
+                {editingBanner ? 'Update' : 'Create'}
               </button>
               <button
                 type="button"
@@ -1606,7 +1609,7 @@ function BannersManager() {
                 }}
                 className="btn-outline"
               >
-                取消
+                Cancel
               </button>
             </div>
             {saveMessage && (
@@ -1631,14 +1634,14 @@ function BannersManager() {
                 <span
                   className={`text-sm px-2 py-1 rounded ${banner.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}
                 >
-                  {banner.is_active ? '已启用' : '已禁用'}
+                  {banner.is_active ? 'Enabled' : 'Disabled'}
                 </span>
                 <div className="flex gap-2">
                   <button onClick={() => handleEdit(banner)} className="text-primary-600 hover:text-primary-800">
-                    编辑
+                    Edit
                   </button>
                   <button onClick={() => handleDelete(banner.id)} className="text-red-600 hover:text-red-800">
-                    删除
+                    Delete
                   </button>
                 </div>
               </div>
@@ -1865,7 +1868,7 @@ function ContentManager() {
       setHasChanges(true);
     } catch (error) {
       console.error('Failed to upload image:', error);
-      setSaveMessage('图片上传失败，请重试');
+      setSaveMessage('Image upload failed, please try again');
       setTimeout(() => setSaveMessage(null), 3000);
     }
   };
@@ -1878,13 +1881,13 @@ function ContentManager() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">网站内容管理</h2>
+      <h2 className="text-2xl font-bold mb-6">Website Content Management</h2>
 
       <div className="flex gap-4 mb-6 flex-wrap">
         <button
           onClick={() => {
             if (hasChanges) {
-              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+              if (confirm('You have unsaved changes. Switching pages will lose these changes. Are you sure you want to continue?')) {
                 setActivePage('home');
               }
             } else {
@@ -1893,12 +1896,12 @@ function ContentManager() {
           }}
           className={`px-4 py-2 rounded-lg ${activePage === 'home' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
-          首页
+          Home
         </button>
         <button
           onClick={() => {
             if (hasChanges) {
-              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+              if (confirm('You have unsaved changes. Switching pages will lose these changes. Are you sure you want to continue?')) {
                 setActivePage('about');
               }
             } else {
@@ -1907,12 +1910,12 @@ function ContentManager() {
           }}
           className={`px-4 py-2 rounded-lg ${activePage === 'about' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
-          关于我们
+          About Us
         </button>
         <button
           onClick={() => {
             if (hasChanges) {
-              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+              if (confirm('You have unsaved changes. Switching pages will lose these changes. Are you sure you want to continue?')) {
                 setActivePage('contact');
               }
             } else {
@@ -1921,12 +1924,12 @@ function ContentManager() {
           }}
           className={`px-4 py-2 rounded-lg ${activePage === 'contact' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
-          联系我们
+          Contact Us
         </button>
         <button
           onClick={() => {
             if (hasChanges) {
-              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+              if (confirm('You have unsaved changes. Switching pages will lose these changes. Are you sure you want to continue?')) {
                 setActivePage('industries');
               }
             } else {
@@ -1935,12 +1938,12 @@ function ContentManager() {
           }}
           className={`px-4 py-2 rounded-lg ${activePage === 'industries' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
-          行业
+          Industries
         </button>
         <button
           onClick={() => {
             if (hasChanges) {
-              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+              if (confirm('You have unsaved changes. Switching pages will lose these changes. Are you sure you want to continue?')) {
                 setActivePage('sustainability');
               }
             } else {
@@ -1949,12 +1952,12 @@ function ContentManager() {
           }}
           className={`px-4 py-2 rounded-lg ${activePage === 'sustainability' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
-          环保
+          Sustainability
         </button>
         <button
           onClick={() => {
             if (hasChanges) {
-              if (confirm('您有未保存的修改，切换页面将丢失这些修改。确定要继续吗？')) {
+              if (confirm('You have unsaved changes. Switching pages will lose these changes. Are you sure you want to continue?')) {
                 setActivePage('footer');
               }
             } else {
@@ -1963,7 +1966,7 @@ function ContentManager() {
           }}
           className={`px-4 py-2 rounded-lg ${activePage === 'footer' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}`}
         >
-          页脚
+          Footer
         </button>
       </div>
 
@@ -1982,10 +1985,10 @@ function ContentManager() {
             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
           }`}
         >
-          {isSaving ? '保存中...' : '保存所有修改'}
+          {isSaving ? 'Saving...' : 'Save All Changes'}
         </button>
         {hasChanges && (
-          <span className="text-orange-600 font-medium">您有未保存的修改</span>
+          <span className="text-orange-600 font-medium">You have unsaved changes</span>
         )}
       </div>
 
@@ -2008,15 +2011,15 @@ function ContentManager() {
                         className="flex-1"
                       />
                       {item.newImage || item.image ? (
-                        <img src={item.newImage || item.image} alt="预览" className="w-16 h-16 object-cover rounded" />
+                        <img src={item.newImage || item.image} alt="Preview" className="w-16 h-16 object-cover rounded" />
                       ) : (
                         <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">
-                          无图片
+                          No Image
                         </div>
                       )}
                       {(item.newImage || item.image) && (
                         <span className="text-xs text-green-600">
-                          {item.newImage ? '新图片' : '当前图片'}
+                          {item.newImage ? 'New Image' : 'Current Image'}
                         </span>
                       )}
                     </div>
@@ -2026,7 +2029,7 @@ function ContentManager() {
                       value={editingValues[item.id] || ''}
                       onChange={(e) => handleInputChange(item.id, e.target.value)}
                       className="input-field w-full"
-                      placeholder={`请输入${getLabel(item.section, item.key)}`}
+                      placeholder={`Please enter ${getLabel(item.section, item.key)}`}
                     />
                   )}
                 </div>

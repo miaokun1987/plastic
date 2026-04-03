@@ -40,8 +40,8 @@ export default function ProductsPage({ categories, products, currentCategory, co
   return (
     <>
       <Head>
-        <title>产品中心 - {content['header_logo'] || '塑袋包装'}</title>
-        <meta name="description" content="专业塑料包装产品，包括平口袋、站立袋、拉链袋、收缩膜、真空袋等" />
+        <title>Products - {content['header_logo'] || 'Plastic Packaging'}</title>
+        <meta name="description" content="Professional plastic packaging products, including lay flat pouches, stand up pouches, zipper pouches, shrink film, vacuum pouches and more" />
       </Head>
 
       {/* Header */}
@@ -52,13 +52,13 @@ export default function ProductsPage({ categories, products, currentCategory, co
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold mb-4">
             {currentCategory
-              ? categories.find((c) => c.slug === currentCategory)?.name || '产品中心'
-              : '产品中心'}
+              ? categories.find((c) => c.slug === currentCategory)?.name || 'Products'
+              : 'Products'}
           </h1>
           <p className="text-xl opacity-90">
             {currentCategory
               ? categories.find((c) => c.slug === currentCategory)?.description
-              : '探索我们的全系列包装产品'}
+              : 'Explore our full range of packaging products'}
           </p>
         </div>
       </section>
@@ -70,7 +70,7 @@ export default function ProductsPage({ categories, products, currentCategory, co
             {/* Sidebar */}
             <aside className="lg:w-64 flex-shrink-0">
               <div className="bg-white rounded-xl shadow p-6 sticky top-24">
-                <h3 className="text-lg font-semibold mb-4">产品分类</h3>
+                <h3 className="text-lg font-semibold mb-4">Product Categories</h3>
                 <nav className="space-y-2">
                   <Link
                     href="/products"
@@ -78,7 +78,7 @@ export default function ProductsPage({ categories, products, currentCategory, co
                       !currentCategory ? 'bg-primary-100 text-primary-600' : 'hover:bg-gray-100'
                     }`}
                   >
-                    全部产品
+                    All Products
                   </Link>
                   {categories.map((category) => (
                     <Link
@@ -97,10 +97,10 @@ export default function ProductsPage({ categories, products, currentCategory, co
 
                 {/* Search */}
                 <div className="mt-6 pt-6 border-t">
-                  <h3 className="text-lg font-semibold mb-4">搜索产品</h3>
+                  <h3 className="text-lg font-semibold mb-4">Search Products</h3>
                   <input
                     type="text"
-                    placeholder="输入关键词..."
+                    placeholder="Enter keywords..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="input-field"
@@ -110,10 +110,10 @@ export default function ProductsPage({ categories, products, currentCategory, co
                 {/* CTA */}
                 <div className="mt-6 pt-6 border-t">
                   <div className="bg-primary-50 rounded-lg p-4">
-                    <h4 className="font-semibold mb-2">需要定制?</h4>
-                    <p className="text-sm text-gray-600 mb-4">联系我们获取专属解决方案</p>
+                    <h4 className="font-semibold mb-2">Need Customization?</h4>
+                    <p className="text-sm text-gray-600 mb-4">Contact us for exclusive solutions</p>
                     <Link href="/contact" className="btn-primary w-full text-center block">
-                      立即咨询
+                      Contact Now
                     </Link>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export default function ProductsPage({ categories, products, currentCategory, co
             <div className="flex-1">
               {filteredProducts.length === 0 ? (
                 <div className="text-center py-12">
-                  <p className="text-gray-500 text-lg">没有找到相关产品</p>
+                  <p className="text-gray-500 text-lg">No related products found</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -146,7 +146,7 @@ export default function ProductsPage({ categories, products, currentCategory, co
                         <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
                         <p className="text-gray-600 text-sm line-clamp-2">{product.short_description}</p>
                         <div className="mt-4 flex items-center text-primary-600">
-                          <span>了解更多</span>
+                          <span>Learn More</span>
                           <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -173,15 +173,15 @@ function Header({ content }: { content: { [key: string]: string } }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold text-primary-600">
-            {content['header_logo'] || '塑袋包装'}
+            {content['header_logo'] || 'Plastic Packaging'}
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-gray-700 hover:text-primary-600">首页</Link>
-            <Link href="/products" className="text-primary-600 font-medium">产品中心</Link>
-            <Link href="/industries" className="text-gray-700 hover:text-primary-600">行业</Link>
-            <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">环保</Link>
-            <Link href="/about" className="text-gray-700 hover:text-primary-600">关于我们</Link>
-            <Link href="/contact" className="text-gray-700 hover:text-primary-600">联系我们</Link>
+            <Link href="/" className="text-gray-700 hover:text-primary-600">Home</Link>
+            <Link href="/products" className="text-primary-600 font-medium">Products</Link>
+            <Link href="/industries" className="text-gray-700 hover:text-primary-600">Industries</Link>
+            <Link href="/sustainability" className="text-gray-700 hover:text-primary-600">Sustainability</Link>
+            <Link href="/about" className="text-gray-700 hover:text-primary-600">About Us</Link>
+            <Link href="/contact" className="text-gray-700 hover:text-primary-600">Contact Us</Link>
           </nav>
         </div>
       </div>
@@ -195,39 +195,39 @@ function Footer({ content }: { content: { [key: string]: string } }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">{content['company_name'] || '塑袋包装科技有限公司'}</h3>
+            <h3 className="text-xl font-bold mb-4">{content['company_name'] || 'Plastic Packaging Technology Co., Ltd.'}</h3>
             <div className="space-y-2 text-gray-400">
               <p>{content['company_address']}</p>
-              <p>电话: {content['company_phone']}</p>
-              <p>邮箱: {content['company_email']}</p>
+              <p>Phone: {content['company_phone']}</p>
+              <p>Email: {content['company_email']}</p>
               {content['social_linkedin'] && <p>LinkedIn: {content['social_linkedin']}</p>}
               {content['social_facebook'] && <p>Facebook: {content['social_facebook']}</p>}
               {content['social_instagram'] && <p>Instagram: {content['social_instagram']}</p>}
             </div>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">快速链接</h4>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/" className="text-gray-400 hover:text-white">首页</Link>
-              <Link href="/products" className="text-gray-400 hover:text-white">产品中心</Link>
-              <Link href="/industries" className="text-gray-400 hover:text-white">行业</Link>
-              <Link href="/sustainability" className="text-gray-400 hover:text-white">环保</Link>
-              <Link href="/about" className="text-gray-400 hover:text-white">关于我们</Link>
-              <Link href="/contact" className="text-gray-400 hover:text-white">联系我们</Link>
+              <Link href="/" className="text-gray-400 hover:text-white">Home</Link>
+              <Link href="/products" className="text-gray-400 hover:text-white">Products</Link>
+              <Link href="/industries" className="text-gray-400 hover:text-white">Industries</Link>
+              <Link href="/sustainability" className="text-gray-400 hover:text-white">Sustainability</Link>
+              <Link href="/about" className="text-gray-400 hover:text-white">About Us</Link>
+              <Link href="/contact" className="text-gray-400 hover:text-white">Contact Us</Link>
             </nav>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">产品分类</h4>
+            <h4 className="text-lg font-semibold mb-4">Product Categories</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">平口袋</Link>
-              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">站立袋</Link>
-              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">拉链袋</Link>
-              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">收缩膜</Link>
+              <Link href="/products/lay-flat-pouches" className="text-gray-400 hover:text-white">Lay Flat Pouches</Link>
+              <Link href="/products/stand-up-pouches" className="text-gray-400 hover:text-white">Stand Up Pouches</Link>
+              <Link href="/products/zipper-pouches" className="text-gray-400 hover:text-white">Zipper Pouches</Link>
+              <Link href="/products/shrink-film" className="text-gray-400 hover:text-white">Shrink Film</Link>
             </nav>
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>{content['copyright_text'] || '© 2024 塑袋包装科技有限公司 版权所有'}</p>
+          <p>{content['copyright_text'] || '© 2024 Plastic Packaging Technology Co., Ltd. All Rights Reserved'}</p>
         </div>
       </div>
     </footer>
